@@ -1,5 +1,7 @@
 #include "MailManager.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "TemplateArgumentsIssues"
 /**
  * Constructor
  */
@@ -12,8 +14,13 @@ MailManager::MailManager() {
  * Agrega un mail al gestor
  * @param m mail a agregar
  */
-void MailManager::addMail(email m) {
 
+void MailManager::addMail(email m) {
+    if (nodoUno == NULL) {
+        nodoUno = new MailManager<email>(m);
+    } else {
+        nodoUno->addMail(m);
+    }
 }
 
 
@@ -80,3 +87,4 @@ vector<email> MailManager::getByQuery(string query) {
     vector<email> ret;
     return ret;
 }
+#pragma clang diagnostic pop

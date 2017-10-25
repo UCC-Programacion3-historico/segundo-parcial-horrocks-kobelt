@@ -11,11 +11,13 @@ using namespace std;
 class MailManager {
 private:
     // Propiedades y metodos privados de la clase
+    vector<email> *nodoUno;
 
 public:
     MailManager();
 
     // Métodos de uso
+
     void addMail(email m);
 
     void deleteMail(unsigned long id);
