@@ -8,6 +8,7 @@ using namespace std;
 /**
  * Clase con los datos del mail
  */
+
 class email {
 private:
     unsigned long id;
@@ -16,8 +17,13 @@ private:
     string date;
     string subject;
     string content;
+    email *left, *right;
 
 public:
+
+
+    void putMail (string fecha, string de, string para, string asunto, string texto);
+
     unsigned long getId() const;
 
     void setId(unsigned long id);
@@ -41,6 +47,14 @@ public:
     const string &getContent() const;
 
     void setContent(const string &content);
+
+    email *getLeft() const;
+
+    void setLeft(email *left);
+
+    email *getRight() const;
+
+    void setRight(email *right);
 
 };
 
