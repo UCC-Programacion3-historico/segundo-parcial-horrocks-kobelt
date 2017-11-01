@@ -17,11 +17,7 @@ MailManager::MailManager() {
 
 template <class email>
 void MailManager::addMail(email m) {
-    if (nodoUno == NULL) {
-        nodoUno = new NodoArbol<T>(dato);
-    } else {
-        nodoUno->putMail(fecha, de, para, asunto, texto);
-    }
+
 }
 
 

@@ -1,21 +1,6 @@
 #include "email.h"
+#include <string.h>
 
-//funcion cargar mail en el nodo
-void putMail (string fecha, string de, string para, string asunto, string texto){
-    if (fecha == date)
-        throw 1;
-    else if (fecha < date) { // va a la izq
-        if (left == NULL)
-            left = new email<string> (fecha, de, para, asunto, texto);
-        else
-            left->putMail(fecha, de, para, asunto, texto);
-    } else { // va a la der
-        if (right == NULL)
-            right = new email<string> (fecha, de, para, asunto, texto);
-        else
-            right->putMail(fecha, de, para, asunto, texto);
-    }
-}
 
 unsigned long email::getId() const {
     return id;
@@ -65,18 +50,11 @@ void email::setContent(const string &content) {
     email::content = content;
 }
 
-email *email::getLeft() const {
-    return left;
-}
+email::email(string de; string para; string fecha; string asunto; string contenido){
+    from = de;
+    to = para;
+    date = fecha;
+    subject = asunto;
+    content = contenido;
 
-void email::setLeft(email *left) {
-    email::left = left;
-}
-
-email *email::getRight() const {
-    return right;
-}
-
-void email::setRight(email *right) {
-    email::right = right;
 }

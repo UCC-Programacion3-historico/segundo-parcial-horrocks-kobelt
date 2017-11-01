@@ -17,12 +17,10 @@ private:
     string date;
     string subject;
     string content;
-    email *left, *right;
 
 public:
 
-
-    void putMail (string fecha, string de, string para, string asunto, string texto);
+    email(string de, string para, string fecha, string asunto, string contenido);
 
     unsigned long getId() const;
 
@@ -47,14 +45,6 @@ public:
     const string &getContent() const;
 
     void setContent(const string &content);
-
-    email *getLeft() const;
-
-    void setLeft(email *left);
-
-    email *getRight() const;
-
-    void setRight(email *right);
 
 };
 
