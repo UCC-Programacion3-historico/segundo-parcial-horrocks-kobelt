@@ -7,7 +7,7 @@
 
 using namespace std;
 
-template <class S, class E>
+
 class MailManager {
 private:
     // Propiedades y metodos privados de la clase
