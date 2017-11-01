@@ -1,5 +1,4 @@
 #include "email.h"
-#include <string.h>
 
 
 unsigned long email::getId() const {
@@ -50,7 +49,7 @@ void email::setContent(const string &content) {
     email::content = content;
 }
 
-email::email(string de; string para; string fecha; string asunto; string contenido){
+email::email(string de, string para, string fecha, string asunto, string contenido){
     from = de;
     to = para;
     date = fecha;

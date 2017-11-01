@@ -2,6 +2,7 @@
 #define MAILMANAGER_ARBOL_H
 
 #include <iostream>
+#include "nodoArbol.h"
 
 
 template<class S, class E>
@@ -45,6 +46,15 @@ Arbol<S, E>::Arbol() {
 template<class S, class E>
 Arbol<S, E>::~Arbol() {
 
+}
+
+template<class S, class E>
+void Arbol<S, E>::put(S dato, E *mail) {
+    if (raiz == NULL) {
+        raiz = new nodoArbol<S, E>(dato, *mail);
+    } else {
+        raiz->put(dato, *mail);
+    }
 }
 
 /**
