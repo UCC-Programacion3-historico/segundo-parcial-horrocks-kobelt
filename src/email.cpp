@@ -1,6 +1,14 @@
 #include "email.h"
 
 
+email::email(string de, string para, string fecha, string asunto, string contenido) {
+    from = de;
+    to = para;
+    date = fecha;
+    subject = asunto;
+    content = contenido;
+}
+
 unsigned long email::getId() const {
     return id;
 }
@@ -49,11 +57,6 @@ void email::setContent(const string &content) {
     email::content = content;
 }
 
-email::email(string de, string para, string fecha, string asunto, string contenido){
-    from = de;
-    to = para;
-    date = fecha;
-    subject = asunto;
-    content = contenido;
 
-}
+
+

@@ -46,6 +46,7 @@ Arbol<S, E>::Arbol() {
 template<class S, class E>
 Arbol<S, E>::~Arbol() {
 
+
 }
 
 template<class S, class E>

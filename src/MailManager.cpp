@@ -18,6 +18,13 @@ MailManager::MailManager() {
 template <class email>
 void MailManager::addMail(email m) {
 
+    if (nodoUno == NULL) {
+        nodoUno = new vector<email>(m);
+        return;
+    }
+
+    nodoUno->push_back(addMail(m));
+
 }
 
 
