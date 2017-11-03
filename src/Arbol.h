@@ -14,6 +14,8 @@ public:
 
     ~Arbol();
 
+    void put(S dato, E *mail);
+
     void ArbolPorFrom();
 
     void ArbolPorDate();
