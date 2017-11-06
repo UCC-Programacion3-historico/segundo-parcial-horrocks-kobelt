@@ -8,7 +8,7 @@
 template<class S, class E>
 class Arbol {
 private:
-    Arbol<S, E> *raiz;
+    Arbol<S, E> *raiz, fecha;
 public:
     Arbol();
 
@@ -18,7 +18,7 @@ public:
 
     void ArbolPorFrom();
 
-    void ArbolPorDate();
+    void ArbolPorDate(string date);
 
     // void remove(T dato);
 
@@ -74,8 +74,10 @@ void Arbol<S, E>::ArbolPorFrom() {
  */
 
 template <class S, class E>
-void Arbol<S, E>::ArbolPorDate() {
-
+void Arbol<S, E>::ArbolPorDate(string date) { //No se como chota hacerlo
+    if (date == fecha)
+        throw 1;
+    else if (date < fecha) { // va a la izq
 }
 
 
