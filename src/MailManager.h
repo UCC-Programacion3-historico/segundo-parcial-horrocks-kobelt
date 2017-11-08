@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "email.h"
+#include "Arbol.h"
 
 #ifndef MAILMANAGER_H
 #define MAILMANAGER_H
@@ -12,11 +13,12 @@ class MailManager {
 private:
     // Propiedades y metodos privados de la clase
     vector<email> *nodoUno;
+    Arbol<string, email*> arbolFecha;
+    Arbol<string, email*> arbolFrom;
+
 
 public:
     MailManager();
-
-    // Métodos de uso
 
     void addMail(email m);
 

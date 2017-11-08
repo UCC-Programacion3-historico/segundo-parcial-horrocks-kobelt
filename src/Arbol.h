@@ -8,13 +8,13 @@
 template<class S, class E>
 class Arbol {
 private:
-    Arbol<S, E> *raiz, fecha;
+    nodoArbol<S, E> *raiz;
 public:
     Arbol();
 
     ~Arbol();
 
-    void put(S dato, E *mail);
+    void put(S clave, E valor);
 
     void ArbolPorFrom();
 
@@ -52,11 +52,11 @@ Arbol<S, E>::~Arbol() {
 }
 
 template<class S, class E>
-void Arbol<S, E>::put(S dato, E *mail) {
+void Arbol<S, E>::put(S clave, E valor) {
     if (raiz == NULL) {
-        raiz = new nodoArbol<S, E>(dato, *mail);
+        raiz = new nodoArbol<S, E>(clave, valor);
     } else {
-        raiz->put(dato, *mail);
+        raiz->put(clave, valor);
     }
 }
 
@@ -75,12 +75,12 @@ void Arbol<S, E>::ArbolPorFrom() {
  */
 
 template <class S, class E>
-void Arbol<S, E>::ArbolPorDate(string date) { //No se como chota hacerlo
+void Arbol<S, E>::ArbolPorDate(string date) {
     if (date == fecha)
         throw 1;
     else if (date < fecha) { // va a la izq
+    }
 }
-
 
 
 #endif //MAILMANAGER_ARBOL_H

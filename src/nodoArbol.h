@@ -10,30 +10,30 @@ private:
 
     nodoArbol *izq, *der;
     S dato;
-    E *mail;
+    LinkedList<E> valores;
 
 public:
 
-    nodoArbol(S dato, E *mail);
+    nodoArbol(S dato, E mail);
 
     S getDato() const;
 
-    void setDato(S dato, E *mail);
+    void setDato(S dato, E mail);
 
-    void put(S d, E *mail);
+    void put(S d, E mail);
 
-    void put(nodoArbol *nodo);
+    void put(nodoArbol nodo);
 
     S search(S d);
 
-    nodoArbol *remover(S param, E *mail);
+    nodoArbol *remover(S param, E mail);
 
     void preorder();
 
     void inorder();
 
     void postorder();
-
+};
 
 template<class S, class E>
 nodoArbol<S, E>::nodoArbol(S dato, E *mail) : dato(dato) {
@@ -43,20 +43,21 @@ nodoArbol<S, E>::nodoArbol(S dato, E *mail) : dato(dato) {
 
 
 template<class S, class E>
-void nodoArbol<S, E>::put(S d, E *e) {
+void nodoArbol<S, E>::put(S d, E e) {
 
-    if (d == dato)
-        throw 1;
-    else if (d < dato) { // va a la izq
+    if (d == dato){
+        valores.addPrimero(e);
+        throw 1;// que pasa cuando son duplicados
+    } else if (d < dato) { // va a la izq
         if (izq == NULL)
-            izq = new nodoArbol<S, E>(d, *e);
+            izq = new nodoArbol<S, E>(d, e);
         else
-            izq->put(d, *e);
+            izq->put(d, e);
     } else { // va a la der
         if (der == NULL)
-            der = new nodoArbol<S, E>(d, *e);
+            der = new nodoArbol<S, E>(d, e);
         else
-            der->put(d, *e);
+            der->put(d, e);
     }
 }
 
