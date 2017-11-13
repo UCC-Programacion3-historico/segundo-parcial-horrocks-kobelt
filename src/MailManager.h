@@ -11,10 +11,9 @@ using namespace std;
 
 class MailManager {
 private:
-    // Propiedades y metodos privados de la clase
+
     Arbol<string, email*> arbolFecha;
     Arbol<string, email*> arbolFrom;
-
 
 public:
 

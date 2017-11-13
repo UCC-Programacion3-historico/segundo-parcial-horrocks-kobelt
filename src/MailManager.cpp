@@ -2,6 +2,8 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
+
+
 /**
  * Constructor
  */
@@ -35,6 +37,8 @@ void MailManager::addMail(email m) {
  * @param id identificador del mail a borrar
  */
 void MailManager::deleteMail(unsigned long id) {
+
+
 
 }
 
