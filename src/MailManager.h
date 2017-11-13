@@ -12,12 +12,12 @@ using namespace std;
 class MailManager {
 private:
     // Propiedades y metodos privados de la clase
-    vector<email> *nodoUno;
     Arbol<string, email*> arbolFecha;
     Arbol<string, email*> arbolFrom;
 
 
 public:
+
     MailManager();
 
     void addMail(email m);

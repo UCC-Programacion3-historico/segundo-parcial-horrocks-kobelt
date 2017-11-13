@@ -2,6 +2,9 @@
 #define MAILMANAGER_NODOARBOL_H
 
 #include <iostream>
+#include "Lista.h"
+#include "email.h"
+
 using namespace std;
 
 template<class S, class E>
@@ -10,7 +13,7 @@ private:
 
     nodoArbol *izq, *der;
     S dato;
-    LinkedList<E> valores;
+    Lista<E> valores;
 
 public:
 
@@ -18,15 +21,15 @@ public:
 
     S getDato() const;
 
-    void setDato(S dato, E mail);
+    void setDato(email e);
 
-    void put(S d, E mail);
+    void put(S d, E mail );
 
-    void put(nodoArbol nodo);
+    void put(nodoArbol<S, E> *nodo);
 
-    S search(S d);
+    nodoArbol<S,E> *remover(S param, E mail);
 
-    nodoArbol *remover(S param, E mail);
+    Lista<E> nodoArbol<S, E>::getMails();
 
     void preorder();
 
@@ -36,28 +39,29 @@ public:
 };
 
 template<class S, class E>
-nodoArbol<S, E>::nodoArbol(S dato, E *mail) : dato(dato) {
+nodoArbol<S, E>::nodoArbol(S dato, E mail) {
+    valores.insertarPrimero(mail);
     izq = NULL;
     der = NULL;
 }
 
 
-template<class S, class E>
-void nodoArbol<S, E>::put(S d, E e) {
+template <class S, class E>
+void nodoArbol::put(S d, E mail ) {
 
     if (d == dato){
-        valores.addPrimero(e);
+        valores.insertarPrimero(mail);
         throw 1;// que pasa cuando son duplicados
     } else if (d < dato) { // va a la izq
         if (izq == NULL)
-            izq = new nodoArbol<S, E>(d, e);
+            izq = new nodoArbol<S, E>(d, mail);
         else
-            izq->put(d, e);
+            izq->put(d, mail);
     } else { // va a la der
         if (der == NULL)
-            der = new nodoArbol<S, E>(d, e);
+            der = new nodoArbol<S, E>(d, mail);
         else
-            der->put(d, e);
+            der->put(d, mail);
     }
 }
 
@@ -70,34 +74,17 @@ void nodoArbol<S, E>::put(nodoArbol<S, E> *nodo) {
         if (izq == NULL)
             izq = dato;
         else
-            izq->put(dato, *mail);
+            izq->put(nodo);
     } else { // va a la der
         if (der == NULL)
             der = dato;
         else
-            der->put(dato, *mail);
-    }
-}
-
-template<class T>
-T NodoArbol<T>::search(T d) {
-    if (d == dato) {
-        return dato;
-    } else if (d < dato) {
-        if (izq == NULL)
-            throw 3;
-        else
-            return izq->search(d);
-    } else {
-        if (der == NULL)
-            throw 3;
-        else
-            return der->search(d);
+            der->put(nodo);
     }
 }
 
 template<class S, class E>
-nodoArbol<S, E>::*remover(S param, E *mail) {
+nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
     nodoArbol<S, E> *aux;
     if (param == dato) {
         if (der != NULL) {
@@ -105,12 +92,12 @@ nodoArbol<S, E>::*remover(S param, E *mail) {
             return der;
         }
         return izq;
-    } else if (d < dato) {
+    } else if (param < dato) {
         if (izq == NULL)
             throw 3;
         else {
             aux = izq;
-            izq = izq->remover(d);
+            izq = izq->remover(param, mail);
             if (izq != aux)
                 delete aux;
         }
@@ -119,7 +106,7 @@ nodoArbol<S, E>::*remover(S param, E *mail) {
             throw 3;
         else {
             aux = der;
-            der = der->remover(d);
+            der = der->remover(param, mail);
             if (der != aux)
                 delete aux;
         }
@@ -133,9 +120,8 @@ S nodoArbol<S, E>::getDato() const {
 }
 
 template<class S, class E>
-void nodoArbol<S, E>::setDato(S dato, E *mail) {
-    nodoArbol::dato = dato;
-    nodoArbol::mail = mail;
+Lista<E> nodoArbol<S, E>::getMails() {
+    return valores;
 }
 
 
