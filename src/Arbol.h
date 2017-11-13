@@ -20,8 +20,6 @@ public:
 
     void remove(S clave, E valor);
 
-    bool esVacio();
-
     // void print();
 
 };

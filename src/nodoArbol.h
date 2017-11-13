@@ -29,6 +29,8 @@ public:
 
     Lista<E> nodoArbol<S, E>::getMails();
 
+    E search (S d);
+
     void inorder();
 };
 
@@ -118,5 +120,27 @@ Lista<E> nodoArbol<S, E>::getMails() {
     return valores;
 }
 
+template <class S, class E>
+E nodoArbol<S, E>::search(S d) {
+    if (d == dato) {
+        return dato;
+    } else if (d < dato) {
+        if (izq == NULL)
+            throw 3;
+        else
+            return izq->search(d);
+    } else {
+        if (der == NULL)
+            throw 3;
+        else
+            return der->search(d);
+    }
+}
+
+void nodoArbol::inorder() {
+    if (izq != NULL) izq->inorder();
+    cout << dato << ", ";
+    if (der != NULL) der->inorder();
+}
 
 #endif //MAILMANAGER_NODOARBOL_H
