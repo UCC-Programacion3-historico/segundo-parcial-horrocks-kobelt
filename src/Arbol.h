@@ -16,7 +16,7 @@ public:
 
     void put(S clave, E valor);
 
-    void ArbolPorFrom();
+    void ArbolPorFrom(string from);
 
     void ArbolPorDate(string date);
 
@@ -65,7 +65,7 @@ void Arbol<S, E>::put(S clave, E valor) {
  */
 
 template <class S, class E>
-void Arbol<S, E>::ArbolPorFrom() {
+void Arbol<S, E>::ArbolPorFrom(string from) {
 
 
 }
