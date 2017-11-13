@@ -76,9 +76,9 @@ void Arbol<S, E>::ArbolPorFrom() {
 
 template <class S, class E>
 void Arbol<S, E>::ArbolPorDate(string date) {
-    if (date == fecha)
+    if (date == *raiz)
         throw 1;
-    else if (date < fecha) { // va a la izq
+    else if (date < *raiz) { // va a la izq
     }
 }
 

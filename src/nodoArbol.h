@@ -31,11 +31,7 @@ public:
 
     Lista<E> nodoArbol<S, E>::getMails();
 
-    void preorder();
-
     void inorder();
-
-    void postorder();
 };
 
 template<class S, class E>
