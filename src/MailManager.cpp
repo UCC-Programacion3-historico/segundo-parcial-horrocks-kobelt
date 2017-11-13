@@ -8,7 +8,7 @@
  * Constructor
  */
 MailManager::MailManager() {
-
+    contador = 0;
 }
 
 
@@ -19,6 +19,7 @@ MailManager::MailManager() {
 
 void MailManager::addMail(email m) {
 
+    m.setId(contador++);
     arbolFecha.put(m.getDate(), &m);
     arbolFrom.put(m.getFrom(), &m);
 

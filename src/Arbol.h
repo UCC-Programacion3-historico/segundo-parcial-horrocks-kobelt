@@ -22,7 +22,7 @@ public:
 
     void ArbolPorDate(string date);
 
-    // void remove(T dato);
+    void remove(S dato);
 
     // bool esVacio();
 
@@ -62,31 +62,9 @@ void Arbol<S, E>::put(S clave, E valor) {
     }
 }
 
-/**
- * formar el arbol en base a los remitentes de los mails
- */
-
 template <class S, class E>
-void Arbol<S, E>::ArbolPorFrom(string from) {
-
-    if (raiz == NULL)
-        raiz->put(nodo);
-    else
-        raiz->put(from, email);
-
-}
-
-/**
- * formar el arbol en base a la fecha de los mails
- */
-
-template <class S, class E>
-void Arbol<S, E>::ArbolPorDate(string date) {
-
-    if(raiz == NULL)
-        raiz->put(nodo);
-    else
-        raiz->put(date, email);
+void Arbol<S, E>::remove(S dato) {
+    
 }
 
 

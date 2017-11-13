@@ -14,6 +14,7 @@ private:
 
     Arbol<string, email*> arbolFecha;
     Arbol<string, email*> arbolFrom;
+    unsigned int contador;
 
 public:
 
