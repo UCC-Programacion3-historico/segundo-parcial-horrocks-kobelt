@@ -18,13 +18,6 @@ MailManager::MailManager() {
  */
 
 void MailManager::addMail(email m) {
-/*
-    vector<int> email(m ,9);te
-    email.insert(email.begin()+3,2);
-    for(unsigned int i=0;i<email.size();i++){
-
-    }
-  */
 
     arbolFecha.put(m.getDate(), &m);
     arbolFrom.put(m.getFrom(), &m);
