@@ -1,7 +1,10 @@
 #include <iostream>
 #include "MailManager.h"
+#include "Arbol.h"
 
 int main() {
-    std::cout << "Super gestor de mails" << std::endl;
-    return 0;
+    Arbol<string, string> hola;
+
+    hola.put('hola', 'hola');
+
 }

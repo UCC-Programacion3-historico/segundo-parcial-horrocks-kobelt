@@ -21,8 +21,6 @@ public:
 
     S getDato() const;
 
-    void setDato(email e);
-
     void put(S d, E mail );
 
     void put(nodoArbol<S, E> *nodo);

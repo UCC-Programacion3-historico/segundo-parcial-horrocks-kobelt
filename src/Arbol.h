@@ -18,13 +18,9 @@ public:
 
     void put(S clave, E valor);
 
-    void ArbolPorFrom(string from);
+    void remove(S clave, E valor);
 
-    void ArbolPorDate(string date);
-
-    void remove(S dato);
-
-    // bool esVacio();
+    bool esVacio();
 
     // void print();
 
@@ -63,8 +59,11 @@ void Arbol<S, E>::put(S clave, E valor) {
 }
 
 template <class S, class E>
-void Arbol<S, E>::remove(S dato) {
-    
+void Arbol<S, E>::remove(S clave, E valor) {
+        if (raiz == NULL)
+            throw 1;
+        else
+            raiz->remover(clave, valor);
 }
 
 
