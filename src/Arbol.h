@@ -69,7 +69,10 @@ void Arbol<S, E>::put(S clave, E valor) {
 template <class S, class E>
 void Arbol<S, E>::ArbolPorFrom(string from) {
 
-    raiz->put(from, email);
+    if (raiz == NULL)
+        raiz->put(nodo);
+    else
+        raiz->put(from, email);
 
 }
 
@@ -79,10 +82,11 @@ void Arbol<S, E>::ArbolPorFrom(string from) {
 
 template <class S, class E>
 void Arbol<S, E>::ArbolPorDate(string date) {
-    if (date == raiz)
-        throw 1;
-    else if (date < raiz) { // va a la izq
-    }
+
+    if(raiz == NULL)
+        raiz->put(nodo);
+    else
+        raiz->put(date, email);
 }
 
 
