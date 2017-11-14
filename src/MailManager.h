@@ -9,7 +9,7 @@
 
 using namespace std;
 
-
+template <class S, class E>
 class MailManager {
 private:
 
@@ -24,7 +24,7 @@ public:
 
     void addMail(email m);
 
-    void deleteMail(unsigned long id);
+    void deleteMail(email m);
 
     vector<email> getSortedByDate();
 

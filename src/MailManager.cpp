@@ -33,16 +33,11 @@ void MailManager::addMail(email m) {
  * Elimina un mail del gestor
  * @param id identificador del mail a borrar
  */
-void MailManager::deleteMail(string from) {
+void MailManager::deleteMail(email m) {
 
 
-    if (from == NULL)
-        throw 1;
-    else {
-        S mail = arbolFrom.buscar(from);
-        email->getId();
-
-    }
+        arbolFrom.remove(m.getFrom(), &m);
+        arbolFecha.remove(m.getDate(), &m);
 
 
 }
