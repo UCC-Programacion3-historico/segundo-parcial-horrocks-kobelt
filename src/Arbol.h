@@ -9,7 +9,6 @@ template<class S, class E>
 class Arbol {
 private:
     nodoArbol<S, E> *raiz;
-    string fecha, de;
 
 public:
     Arbol();

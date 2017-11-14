@@ -5,6 +5,6 @@
 int main() {
     Arbol<string, string> hola;
 
-    hola.put('hola', 'hola');
+    hola.put("hola", "hola");
 
 }
