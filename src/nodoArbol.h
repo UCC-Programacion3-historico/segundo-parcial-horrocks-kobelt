@@ -111,7 +111,7 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
 }
 
 template<class S, class E>
-S nodoArbol<S, E>::getDato() const {
+S  nodoArbol<S, E>::getDato() const {
     return dato;
 }
 

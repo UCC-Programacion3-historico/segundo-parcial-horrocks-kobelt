@@ -1,11 +1,8 @@
-#include <sstream>
 #include "MailManager.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
-
-using namespace std;
 
 /**
  * Constructor
@@ -26,13 +23,6 @@ void MailManager::addMail(email m) {
     arbolFecha.put(m.getDate(), &m);
     arbolFrom.put(m.getFrom(), &m);
 
-    do{
-        istringstream palabra(m.getSubject());
-        arbolPalabra.put(palabra, &m);
-    }while (palabra != NULL);
-
-
-
 }
 
 
@@ -42,11 +32,6 @@ void MailManager::addMail(email m) {
  */
 void MailManager::deleteMail(unsigned long id) {
 
-    if (id == NULL)
-        throw 1;
-    else {
-
-    }
 
 
 }
