@@ -29,13 +29,14 @@ public:
 
     nodoArbol<S,E> *remover(S param, E mail);
 
-    Lista<E> nodoArbol<S, E>::getMails();
+    Lista<E> nodoArbol<S, E>::getMails(S d);
 
     E search (S d);
 
-    void borrarUno(unsigned int identif, S param, E mail);
-
     vector<email> inorder();
+
+
+    // void borrarUno(unsigned int identif, S param, E mail);
 };
 
 template<class S, class E>
@@ -126,8 +127,20 @@ S  nodoArbol<S, E>::getDato() const {
 }
 
 template<class S, class E>
-Lista<E> nodoArbol<S, E>::getMails() {
-    return valores;
+Lista<E> nodoArbol<S, E>::getMails(S d) {
+    if (d == dato) {
+        return valores;
+    } else if (d < dato) {
+        if (izq == NULL)
+            throw 3;
+        else
+            return izq->search(d);
+    } else {
+        if (der == NULL)
+            throw 3;
+        else
+            return der->search(d);
+    }
 }
 
 template <class S, class E>
@@ -146,6 +159,16 @@ E nodoArbol<S, E>::search(S d) {
             return der->search(d);
     }
 }
+
+
+template <class S, class E>
+vector<email> nodoArbol::inorder() {
+    if (izq != NULL) izq->inorder();
+    listaInorder = dato;
+    if (der != NULL) der->inorder();
+    return listaInorder;
+}
+
 /*
 template <class S, class E>
 void nodoArbol::borrarUno(unsigned int identif, S param, E mail) {
@@ -165,14 +188,6 @@ void nodoArbol::borrarUno(unsigned int identif, S param, E mail) {
     }
 }
  */
- // No se si es necesario (carita pensativa)
-
-template <class S, class E>
-vector<email> nodoArbol::inorder() {
-    if (izq != NULL) izq->inorder();
-    listaInorder = dato;
-    if (der != NULL) der->inorder();
-    return listaInorder;
-}
+// No se si es necesario
 
 #endif //MAILMANAGER_NODOARBOL_H

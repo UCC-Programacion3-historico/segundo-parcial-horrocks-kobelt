@@ -23,6 +23,8 @@ public:
 
     vector<email> inorder();
 
+    vector<email> getMails(S d);
+
     // void print();
 
 };
@@ -77,7 +79,6 @@ E Arbol::buscar(S clave) {
     }
 }
 
-template <class E>
 vector<email> Arbol::inorder(){
     if (raiz != NULL){
         raiz->inorder();
@@ -85,6 +86,14 @@ vector<email> Arbol::inorder(){
         throw 404;
 
 }
+template <class S>
+vector<email> Arbol::getMails(S d){
+    vector <email> mails;
+    if(raiz != NULL){
+        mails = raiz.getmails();
+    }
+}
+
 
 
 #endif //MAILMANAGER_ARBOL_H

@@ -63,7 +63,11 @@ vector<email> MailManager::getSortedByDate() {
  */
 vector<email> MailManager::getSortedByDate(string desde, string hasta) {
 
-    vector<email> ret;
+    vector<email> temporal, ret;
+    temporal = arbolFecha.inorder();
+    while(){
+
+    }
     return ret;
 }
 
@@ -88,6 +92,7 @@ vector<email> MailManager::getSortedByFrom() {
 vector<email> MailManager::getByFrom(string from) {
 
     vector<email> ret;
+    ret = arbolFrom.getMails(from);
     return ret;
 }
 

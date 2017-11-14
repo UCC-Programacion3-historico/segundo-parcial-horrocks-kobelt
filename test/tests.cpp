@@ -42,22 +42,22 @@ TEST(add_test, carga20Mails) {
 TEST(add_test, carga100Mails) {
     vector<email> mails = load_mm("../../test/mails-100.txt");
     EXPECT_EQ(mails.size(), 100);
-    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[99].from, "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[99].getFrom(), "t---@grulic.psi.unc.edu.ar");
 }
 
 TEST(add_test, carga1000Mails) {
     vector<email> mails = load_mm("../../test/mails-1000.txt");
     EXPECT_EQ(mails.size(), 1000);
-    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[999].from, "girald---@gmail.com");
+    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[999].getFrom(), "girald---@gmail.com");
 }
 
 TEST(add_test, carga3001Mails) {
     vector<email> mails = load_mm("../../test/mails-3001.txt");
     EXPECT_EQ(mails.size(), 3001);
-    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[3000].from, "sebas---@gmail.com");
+    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[3000].getFrom(), "sebas---@gmail.com");
 }
 
 TEST(add_test, testMM) {
@@ -68,8 +68,8 @@ TEST(add_test, testMM) {
     }
     /* std::cout << value; ... */
     EXPECT_EQ(mails.size(), 3001);
-    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[3000].from, "sebas---@gmail.com");
+    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[3000].getFrom(), "sebas---@gmail.com");
 }
 
 string trim(string &str) {
