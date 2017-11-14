@@ -48,8 +48,8 @@ void MailManager::deleteMail(email m) {
  */
 vector<email> MailManager::getSortedByDate() {
 
-
     vector<email> ret;
+    ret = arbolFecha.inorder();
     return ret;
 }
 
@@ -62,6 +62,7 @@ vector<email> MailManager::getSortedByDate() {
  * @return lista de mails ordenados
  */
 vector<email> MailManager::getSortedByDate(string desde, string hasta) {
+
     vector<email> ret;
     return ret;
 }
@@ -72,7 +73,9 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
  * @return lista de mails ordenados
  */
 vector<email> MailManager::getSortedByFrom() {
+
     vector<email> ret;
+    ret = arbolFrom.inorder();
     return ret;
 }
 
@@ -83,6 +86,7 @@ vector<email> MailManager::getSortedByFrom() {
  * @return lista de mails del remitente
  */
 vector<email> MailManager::getByFrom(string from) {
+
     vector<email> ret;
     return ret;
 }

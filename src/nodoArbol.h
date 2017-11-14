@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Lista.h"
 #include "email.h"
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,7 @@ private:
     nodoArbol *izq, *der;
     S dato;
     Lista<E> valores;
+    vector<email>listaInorder;
 
 public:
 
@@ -33,7 +35,7 @@ public:
 
     void borrarUno(unsigned int identif, S param, E mail);
 
-    void inorder();
+    vector<email> inorder();
 };
 
 template<class S, class E>
@@ -144,7 +146,7 @@ E nodoArbol<S, E>::search(S d) {
             return der->search(d);
     }
 }
-
+/*
 template <class S, class E>
 void nodoArbol::borrarUno(unsigned int identif, S param, E mail) {
     if (param == dato) {
@@ -162,11 +164,15 @@ void nodoArbol::borrarUno(unsigned int identif, S param, E mail) {
             return der->search(param);
     }
 }
+ */
+ // No se si es necesario (carita pensativa)
 
-void nodoArbol::inorder() {
+template <class S, class E>
+vector<email> nodoArbol::inorder() {
     if (izq != NULL) izq->inorder();
-    cout << dato << ", ";
+    listaInorder = dato;
     if (der != NULL) der->inorder();
+    return listaInorder;
 }
 
 #endif //MAILMANAGER_NODOARBOL_H

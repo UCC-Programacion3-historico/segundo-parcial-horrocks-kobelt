@@ -21,6 +21,8 @@ public:
 
     E buscar (S clave);
 
+    vector<email> inorder();
+
     // void print();
 
 };
@@ -73,6 +75,15 @@ E Arbol::buscar(S clave) {
     else {
         raiz->search(clave);
     }
+}
+
+template <class E>
+vector<email> Arbol::inorder(){
+    if (raiz != NULL){
+        raiz->inorder();
+    }else
+        throw 404;
+
 }
 
 
