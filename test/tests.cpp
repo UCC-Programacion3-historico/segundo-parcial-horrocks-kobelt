@@ -62,8 +62,8 @@ TEST(add_test, carga2Mails) {
 TEST(add_test, carga20Mails) {
     vector<email> mails = load_mm("../../test/mails-20.txt");
     EXPECT_EQ(mails.size(), 20);
-    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[19].from, "javier---@gmail.com");
+    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[19].getFrom(), "javier---@gmail.com");
 }
 
 TEST(add_test, carga100Mails) {

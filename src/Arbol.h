@@ -19,6 +19,8 @@ public:
 
     void remove(S clave, E valor);
 
+    E buscar (S clave);
+
     // void print();
 
 };
@@ -61,6 +63,16 @@ void Arbol<S, E>::remove(S clave, E valor) {
             throw 1;
         else
             raiz->remover(clave, valor);
+}
+
+template <class S, class E>
+E Arbol::buscar(S clave) {
+
+    if (raiz == NULL)
+        throw  1;
+    else {
+        raiz->search(clave);
+    }
 }
 
 

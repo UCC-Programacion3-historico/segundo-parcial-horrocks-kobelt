@@ -31,6 +31,8 @@ public:
 
     E search (S d);
 
+    void borrarUno(unsigned int identif, S param, E mail);
+
     void inorder();
 };
 
@@ -96,6 +98,7 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
             izq = izq->remover(param, mail);
             if (izq != aux)
                 delete aux;
+
         }
     } else {
         if (der == NULL)
@@ -134,6 +137,24 @@ E nodoArbol<S, E>::search(S d) {
             throw 3;
         else
             return der->search(d);
+    }
+}
+
+template <class S, class E>
+void nodoArbol::borrarUno(unsigned int identif, S param, E mail) {
+    if (param == dato) {
+        valores.remover(identif);
+        return dato;
+    } else if (param < dato) {
+        if (param == NULL)
+            throw 3;
+        else
+            return izq->search(param);
+    } else {
+        if (der == NULL)
+            throw 3;
+        else
+            return der->search(param);
     }
 }
 

@@ -1,5 +1,6 @@
 #include "MailManager.h"
 
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
@@ -22,7 +23,7 @@ void MailManager::addMail(email m) {
     m.setId(contador++);
     arbolFecha.put(m.getDate(), &m);
     arbolFrom.put(m.getFrom(), &m);
-    testt
+
 
 
 }
@@ -32,8 +33,16 @@ void MailManager::addMail(email m) {
  * Elimina un mail del gestor
  * @param id identificador del mail a borrar
  */
-void MailManager::deleteMail(unsigned long id) {
+void MailManager::deleteMail(string from) {
 
+
+    if (from == NULL)
+        throw 1;
+    else {
+        S mail = arbolFrom.buscar(from);
+        email->getId();
+
+    }
 
 
 }

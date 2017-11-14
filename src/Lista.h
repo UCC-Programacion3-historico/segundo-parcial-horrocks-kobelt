@@ -13,6 +13,7 @@ class Lista {
 private:
     nodo<T> *inicio;
 
+
 public:
     Lista();
 
@@ -176,6 +177,7 @@ void Lista<T>::remover(int pos) {
     nodo<T> *aux = inicio;
     int count=0;
 
+
     if (pos == 0){
         if (inicio==NULL)
             throw 1;
@@ -248,6 +250,8 @@ void Lista<T>::reemplazar(int pos, T dato) {
  */
 template<class T>
 void Lista<T>::vaciar() {}
+
+
 
 
 #endif //LISTA_H
