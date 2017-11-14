@@ -35,7 +35,6 @@ void MailManager::addMail(email m) {
  */
 void MailManager::deleteMail(email m) {
 
-
         arbolFrom.remove(m.getFrom(), &m);
         arbolFecha.remove(m.getDate(), &m);
 

@@ -96,8 +96,10 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
         else {
             aux = izq;
             izq = izq->remover(param, mail);
-            if (izq != aux)
+            if (izq != aux) {
+                valores.remover(mail.getid());
                 delete aux;
+            }
 
         }
     } else {
@@ -106,8 +108,11 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
         else {
             aux = der;
             der = der->remover(param, mail);
-            if (der != aux)
+            if (der != aux){
+                valores.remover(mail.getid());
                 delete aux;
+            }
+
         }
     }
     return this;
