@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template <class S, class E>
+
 class MailManager {
 private:
 

@@ -10,7 +10,9 @@ using namespace std;
  */
 
 class email {
-private:
+public:
+    email(email *&pEmail);
+
     unsigned long id;
     string from;
     string to;
@@ -19,6 +21,8 @@ private:
     string content;
 
 public:
+
+    email() {};
 
     email(string de, string para, string fecha, string asunto, string contenido);
 

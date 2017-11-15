@@ -21,7 +21,7 @@ public:
 
     E buscar (S clave);
 
-    vector<email> inorder();
+    void inorder(vector<E> &resultado);
 
     vector<email> getMails(S d);
 
@@ -70,7 +70,7 @@ void Arbol<S, E>::remove(S clave, E valor) {
 }
 
 template <class S, class E>
-E Arbol::buscar(S clave) {
+E Arbol<S, E>::buscar(S clave) {
 
     if (raiz == NULL)
         throw  1;
@@ -79,21 +79,22 @@ E Arbol::buscar(S clave) {
     }
 }
 
-vector<email> Arbol::inorder(){
+template <class S, class E>
+void Arbol<S, E>::inorder(vector<E> &resultado){
     if (raiz != NULL){
-        raiz->inorder();
+        raiz->inorder(resultado);
     }else
         throw 404;
 
 }
-template <class S>
-vector<email> Arbol::getMails(S d){
+
+template <class S, class E>
+vector<email> Arbol<S, E>::getMails(S d){
     vector <email> mails;
     if(raiz != NULL){
         
     }
 }
-
 
 
 #endif //MAILMANAGER_ARBOL_H

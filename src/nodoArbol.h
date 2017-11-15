@@ -15,7 +15,7 @@ private:
     nodoArbol *izq, *der;
     S dato;
     Lista<E> valores;
-    vector<email>listaInorder;
+    vector<email> listaInorder;
 
 public:
 
@@ -23,17 +23,17 @@ public:
 
     S getDato() const;
 
-    void put(S d, E mail );
+    void put(S d, E mail);
 
     void put(nodoArbol<S, E> *nodo);
 
-    nodoArbol<S,E> *remover(S param, E mail);
+    nodoArbol<S, E> *remover(S param, E mail);
 
-    Lista<E> nodoArbol<S, E>::getMails(S d);
+    Lista<E> getMails(S d);
 
-    E search (S d);
+    E search(S d);
 
-    vector<email> inorder();
+    void inorder(vector<E> &resultado);
 
 
     // void borrarUno(unsigned int identif, S param, E mail);
@@ -47,10 +47,10 @@ nodoArbol<S, E>::nodoArbol(S dato, E mail) {
 }
 
 
-template <class S, class E>
-void nodoArbol::put(S d, E mail ) {
+template<class S, class E>
+void nodoArbol<S, E>::put(S d, E mail) {
 
-    if (d == dato){
+    if (d == dato) {
         valores.insertarPrimero(mail);
         throw 1;// que pasa cuando son duplicados
     } else if (d < dato) { // va a la izq
@@ -73,19 +73,19 @@ void nodoArbol<S, E>::put(nodoArbol<S, E> *nodo) {
         throw 1;
     else if (nodo->getDato() < dato) { // va a la izq
         if (izq == NULL)
-            izq = dato;
+            izq = nodo;
         else
             izq->put(nodo);
     } else { // va a la der
         if (der == NULL)
-            der = dato;
+            der = nodo;
         else
             der->put(nodo);
     }
 }
 
 template<class S, class E>
-nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
+nodoArbol<S, E> *nodoArbol<S, E>::remover(S param, E mail) {
     nodoArbol<S, E> *aux;
     if (param == dato) {
         if (der != NULL) {
@@ -100,7 +100,7 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
             aux = izq;
             izq = izq->remover(param, mail);
             if (izq != aux) {
-                valores.remover(mail.getid());
+                valores.remover(mail->getId());
                 delete aux;
             }
 
@@ -111,8 +111,8 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
         else {
             aux = der;
             der = der->remover(param, mail);
-            if (der != aux){
-                valores.remover(mail.getid());
+            if (der != aux) {
+                valores.remover(mail->getId());
                 delete aux;
             }
 
@@ -122,11 +122,11 @@ nodoArbol<S,E> *nodoArbol<S, E>::remover(S param, E mail) {
 }
 
 template<class S, class E>
-S  nodoArbol<S, E>::getDato() const {
+S nodoArbol<S, E>::getDato() const {
     return dato;
 }
 
-template<class S, class E, class T>
+template<class S, class E>
 Lista<E> nodoArbol<S, E>::getMails(S d) {
     if (d == dato) {
         return valores;
@@ -143,7 +143,7 @@ Lista<E> nodoArbol<S, E>::getMails(S d) {
     }
 }
 
-template <class S, class E>
+template<class S, class E>
 E nodoArbol<S, E>::search(S d) {
     if (d == dato) {
         return dato;
@@ -161,12 +161,12 @@ E nodoArbol<S, E>::search(S d) {
 }
 
 
-template <class S, class E>
-vector<email> nodoArbol::inorder() {
-    if (izq != NULL) izq->inorder();
-    listaInorder = dato;
-    if (der != NULL) der->inorder();
-    return listaInorder;
+template<class S, class E>
+void nodoArbol<S, E>::inorder(vector<E> &resultado) {
+    if (izq != NULL) izq->inorder(resultado);
+    for (unsigned i = 0; i < valores.getTamanio(); i++)
+        resultado.push_back(valores.getDato(i));
+    if (der != NULL) der->inorder(resultado);
 }
 
 /*

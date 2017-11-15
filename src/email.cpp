@@ -56,6 +56,14 @@ const string &email::getContent() const {
 void email::setContent(const string &content) {
     email::content = content;
 }
+// TODO: constructor por copia.
+email::email(email *&pEmail) {
+    this->date = pEmail->date; //TODO: Copiar todos los datos del mail que referencia
+    this->date = pEmail->date;
+    this->date = pEmail->date;
+    this->date = pEmail->date;
+    this->date = pEmail->date;
+}
 
 
 

@@ -1,3 +1,4 @@
+#include <cstring>
 #include "MailManager.h"
 
 
@@ -26,12 +27,11 @@ void MailManager::addMail(email m) {
     string word;
     char limite = ' ';
     word = m.getSubject();
-    char *temp = strtok(word,limite);
-    while (temp != NULL){
+    char *temp = strtok((char *) word.c_str(), &limite);
+    while (temp != NULL) {
         arbolPalabra.put(temp, &m);
-        temp = strtok(NULL,limite);
+        temp = strtok(NULL, &limite);
     }
-
 
 
 }
@@ -43,8 +43,8 @@ void MailManager::addMail(email m) {
  */
 void MailManager::deleteMail(email m) {
 
-        arbolFrom.remove(m.getFrom(), &m);
-        arbolFecha.remove(m.getDate(), &m);
+    arbolFrom.remove(m.getFrom(), &m);
+    arbolFecha.remove(m.getDate(), &m);
 
 
 }
@@ -56,8 +56,12 @@ void MailManager::deleteMail(email m) {
  */
 vector<email> MailManager::getSortedByDate() {
 
+    vector<email *> datos;
     vector<email> ret;
-    ret = arbolFecha.inorder();
+    arbolFecha.inorder(datos);
+    for (unsigned i = 0; i < datos.size(); i++) {
+        ret.push_back(datos[i]);
+    }
     return ret;
 }
 
@@ -71,15 +75,16 @@ vector<email> MailManager::getSortedByDate() {
  */
 vector<email> MailManager::getSortedByDate(string desde, string hasta) {
 
-    vector<email> temporal, ret;
-    temporal = arbolFecha.inorder();
-    while(){
+    vector<email *> temporal;
+    vector<email> ret;
+    arbolFecha.inorder(temporal);
+    for (unsigned i = 0; i < temporal.size(); i++) {
 
-        if(temporal->getDate() >= desde && temporal->getDate() <= hasta){
-            ret = temporal[];
+        if (temporal[i]->getDate() >= desde && temporal[i]->getDate() <= hasta) {
+            ret.push_back(temporal[i]);
         }
-
-    return ret;
+        return ret;
+    }
 }
 
 
@@ -89,8 +94,9 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
  */
 vector<email> MailManager::getSortedByFrom() {
 
-    vector<email> ret;
-    ret = arbolFecha.inorder();
+    vector<email *> temporal;
+    vector<email> ret; // TODO Copiar todo al vector
+    arbolFecha.inorder(temporal);
     return ret;
 }
 
@@ -118,4 +124,5 @@ vector<email> MailManager::getByQuery(string query) {
     vector<email> ret;
     return ret;
 }
+
 #pragma clang diagnostic pop

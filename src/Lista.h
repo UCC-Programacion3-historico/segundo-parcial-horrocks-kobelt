@@ -227,7 +227,7 @@ T Lista<T>::getDato(int pos) {
 }
 
 template <class T>
-T Lista::mails() {
+T Lista<T>::mails() {
     vector<T> lista;
     nodo<T> *aux = inicio;
 
