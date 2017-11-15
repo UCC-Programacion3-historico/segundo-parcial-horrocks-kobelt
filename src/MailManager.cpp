@@ -66,7 +66,9 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
     vector<email> temporal, ret;
     temporal = arbolFecha.inorder();
     while(){
-
+        if(temporal->getDate() >= desde && temporal->getDate() <= hasta){
+            ret = temporal[];
+        }
     }
     return ret;
 }

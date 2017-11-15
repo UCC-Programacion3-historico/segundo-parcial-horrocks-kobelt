@@ -37,7 +37,7 @@ public:
 
     T getDato(int pos);
 
-    vector<email> mails();
+    T mails();
 
     void reemplazar(int pos, T dato);
 
@@ -226,13 +226,13 @@ T Lista<T>::getDato(int pos) {
 }
 
 template <class T>
-vector<email> Lista::mails() {
-    vector <email> lista;
+T Lista::mails() {
+    vector<T> lista;
     nodo<T> *aux = inicio;
 
     while (aux != NULL){
-        lista.push_back(aux->getNext());
-
+        aux = aux->getNext();
+        lista = aux->getDato();
     }
 }
 

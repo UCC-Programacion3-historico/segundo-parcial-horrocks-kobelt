@@ -126,7 +126,7 @@ S  nodoArbol<S, E>::getDato() const {
     return dato;
 }
 
-template<class S, class E>
+template<class S, class E, class T>
 Lista<E> nodoArbol<S, E>::getMails(S d) {
     if (d == dato) {
         return valores;
