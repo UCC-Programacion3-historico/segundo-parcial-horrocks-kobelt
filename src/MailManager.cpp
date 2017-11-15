@@ -12,17 +12,25 @@ MailManager::MailManager() {
     contador = 0;
 }
 
-
 /**
  * Agrega un mail al gestor
  * @param m mail a agregar
  */
-
 void MailManager::addMail(email m) {
 
     m.setId(contador++);
     arbolFecha.put(m.getDate(), &m);
     arbolFrom.put(m.getFrom(), &m);
+
+    //insertar palabra por palabra del asunto dentro del arbol
+    string word;
+    char limite = ' ';
+    word = m.getSubject();
+    char *temp = strtok(word,limite);
+    while (temp != NULL){
+        arbolPalabra.put(temp, &m);
+        temp = strtok(NULL,limite);
+    }
 
 
 
@@ -66,7 +74,9 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
     vector<email> temporal, ret;
     temporal = arbolFecha.inorder();
     while(){
-
+        if(temporal->getDate() >= desde && temporal->getDate() <= hasta){
+            ret = temporal[];
+        }
     }
     return ret;
 }

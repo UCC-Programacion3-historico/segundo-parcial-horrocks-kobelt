@@ -90,7 +90,7 @@ template <class S>
 vector<email> Arbol::getMails(S d){
     vector <email> mails;
     if(raiz != NULL){
-        mails = raiz.getmails();
+        
     }
 }
 

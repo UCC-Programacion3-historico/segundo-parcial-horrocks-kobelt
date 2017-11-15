@@ -2,6 +2,8 @@
 #define LISTA_H
 
 #include "nodo.h"
+#include <vector>
+
 /**
  * Clase que implementa una Lista Enlasada generica, ya que puede
  * almacenar cualquier tipo de dato T
@@ -34,6 +36,8 @@ public:
     void remover(int pos);
 
     T getDato(int pos);
+
+    T mails();
 
     void reemplazar(int pos, T dato);
 
@@ -219,6 +223,17 @@ T Lista<T>::getDato(int pos) {
         throw 3;
 
     return aux->getDato();
+}
+
+template <class T>
+T Lista::mails() {
+    vector<T> lista;
+    nodo<T> *aux = inicio;
+
+    while (aux != NULL){
+        aux = aux->getNext();
+        lista = aux->getDato();
+    }
 }
 
 
