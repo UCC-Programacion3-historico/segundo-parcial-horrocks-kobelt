@@ -97,17 +97,17 @@ vector<email> load_mm(string archivo) {
                         if (mail != NULL)
                             mails.push_back(*mail);
                         mail = new email();
-                        mail->content = "";
+                        mail->getContent() = "";
                     } else if (campos[0] == "date") {
-                        mail->date = trim(campos[1]);
+                        mail->getDate() = trim(campos[1]);
                     } else if (campos[0] == "from") {
-                        mail->from = trim(campos[1]);
+                        mail->getFrom() = trim(campos[1]);
                     } else if (campos[0] == "to") {
-                        mail->to = trim(campos[1]);
+                        mail->getTo() = trim(campos[1]);
                     } else if (campos[0] == "subject") {
-                        mail->subject = trim(campos[1]);
+                        mail->getSubject() = trim(campos[1]);
                     } else {
-                        mail->content += line + "\n";
+                        mail->getContent() += line + "\n";
                     }
                 }
             }
