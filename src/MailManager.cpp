@@ -90,7 +90,7 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
 vector<email> MailManager::getSortedByFrom() {
 
     vector<email> ret;
-    ret = arbolFrom.inorder();
+    ret = arbolFecha.inorder();
     return ret;
 }
 
