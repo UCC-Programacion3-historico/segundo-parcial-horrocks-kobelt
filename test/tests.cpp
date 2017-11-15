@@ -18,6 +18,33 @@ vector<string> split(const string &s, char delim) {
     }
     return elems;
 }
+void split(string Linea, char Separador, vector<string> &TempBuff, int &TotalVector) {
+    TempBuff.resize(0);
+    TotalVector = 0;
+    int Nums = -1;
+    int NumPos = -1;
+    int ValorNum = 0;
+    int TotalChars = 0;
+    int TotalEspacios = Linea.length();
+    string Valor;
+    Cuenta(Linea, Separador, TotalChars);
+    if (TotalChars != 0) {
+        while (Nums < TotalChars) {
+            Nums++;
+            ValorNum = Linea.find(Separador, NumPos + 1);
+            Valor = Linea.substr(NumPos + 1,ValorNum);
+            Valor = Valor.substr(0, Valor.find_first_of(Separador));
+            TempBuff.push_back(Valor);
+            NumPos = ValorNum;
+            TotalEspacios++;
+        }
+        TotalVector = TempBuff.size();
+    }
+    else {
+        //TempBuff.push_back(Linea.substr(0, Linea.find_first_of(Separador)));
+        TotalVector = 0;
+    }
+}
 
 TEST(add_test, andaSplit) {
     vector<string> elems = split("HOLA:Mundo:chau", ':');
@@ -42,22 +69,22 @@ TEST(add_test, carga20Mails) {
 TEST(add_test, carga100Mails) {
     vector<email> mails = load_mm("../../test/mails-100.txt");
     EXPECT_EQ(mails.size(), 100);
-    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[99].getFrom(), "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[99].from, "t---@grulic.psi.unc.edu.ar");
 }
 
 TEST(add_test, carga1000Mails) {
     vector<email> mails = load_mm("../../test/mails-1000.txt");
     EXPECT_EQ(mails.size(), 1000);
-    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[999].getFrom(), "girald---@gmail.com");
+    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[999].from, "girald---@gmail.com");
 }
 
 TEST(add_test, carga3001Mails) {
     vector<email> mails = load_mm("../../test/mails-3001.txt");
     EXPECT_EQ(mails.size(), 3001);
-    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[3000].getFrom(), "sebas---@gmail.com");
+    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[3000].from, "sebas---@gmail.com");
 }
 
 TEST(add_test, testMM) {
@@ -68,8 +95,8 @@ TEST(add_test, testMM) {
     }
     /* std::cout << value; ... */
     EXPECT_EQ(mails.size(), 3001);
-    EXPECT_EQ(mails[0].getFrom(), "t---@grulic.psi.unc.edu.ar");
-    EXPECT_EQ(mails[3000].getFrom(), "sebas---@gmail.com");
+    EXPECT_EQ(mails[0].from, "t---@grulic.psi.unc.edu.ar");
+    EXPECT_EQ(mails[3000].from, "sebas---@gmail.com");
 }
 
 string trim(string &str) {
