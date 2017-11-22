@@ -11,8 +11,6 @@ using namespace std;
 
 class email {
 public:
-    email(email *&pEmail);
-
     unsigned long id;
     string from;
     string to;
@@ -20,9 +18,10 @@ public:
     string subject;
     string content;
 
-public:
 
     email() {};
+
+    email(email *&pEmail);
 
     email(string de, string para, string fecha, string asunto, string contenido);
 

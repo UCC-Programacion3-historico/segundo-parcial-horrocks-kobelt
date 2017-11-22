@@ -1,8 +1,8 @@
 #include <string>
 #include <vector>
-#include "email.h"
+//#include "email.h"
 #include "Arbol.h"
-#include "Lista.h"
+//#include "Lista.h"
 
 #ifndef MAILMANAGER_H
 #define MAILMANAGER_H

@@ -1,12 +1,20 @@
 #include "email.h"
 
-
+//constructor
 email::email(string de, string para, string fecha, string asunto, string contenido) {
     from = de;
     to = para;
     date = fecha;
     subject = asunto;
     content = contenido;
+}
+//constructor por copia
+email::email(email *&pEmail) {
+    this->date = pEmail->date;
+    this->from = pEmail->from;
+    this->to = pEmail->to;
+    this->subject = pEmail->subject;
+    this->content = pEmail->content;
 }
 
 unsigned long email::getId() const {
@@ -56,14 +64,7 @@ const string &email::getContent() const {
 void email::setContent(const string &content) {
     email::content = content;
 }
-// TODO: constructor por copia.
-email::email(email *&pEmail) {
-    this->date = pEmail->date; //TODO: Copiar todos los datos del mail que referencia
-    this->date = pEmail->date;
-    this->date = pEmail->date;
-    this->date = pEmail->date;
-    this->date = pEmail->date;
-}
+
 
 
 

@@ -3,6 +3,7 @@
 
 #include "nodo.h"
 #include <vector>
+#include "email.h"
 
 /**
  * Clase que implementa una Lista Enlasada generica, ya que puede
@@ -10,9 +11,10 @@
  * @tparam T cualquier tipo de dato
  */
 
-template<class T>
+template <class T>
 class Lista {
 private:
+
     nodo<T> *inicio;
 
 
@@ -27,11 +29,9 @@ public:
 
     int getTamanio();
 
-    void insertar(int pos, T dato);
+    void insertar(T dato);
 
     void insertarPrimero(T dato);
-
-    void insertarUltimo(T dato);
 
     void remover(int pos);
 
@@ -46,33 +46,16 @@ public:
     nodo<T> *getInicio(){return inicio;}
 };
 
-
-/**
- * Constructor de la clase Lista
- * @tparam T
- */
-template<class T>
+template <class T>
 Lista<T>::Lista() {
     inicio = NULL;
 }
 
-
-/**
- * Constructor por copia de la clase Lista
- * @tparam T
- * @param li
- */
-template<class T>
+template <class T>
 Lista<T>::Lista(const Lista<T> &li) {}
 
-
-/**
- * Destructor de la clase Lista, se encarga de liberar la memoria de todos los nodos
- * utilizados en la lista
- * @tparam T
- */
-template<class T>
-Lista<T>::~Lista() {
+template <class T>
+Lista<email>::~Lista() {
     nodo<T> *aux = inicio;
     nodo<T> *ant = inicio;
 
@@ -120,25 +103,23 @@ int Lista<T>::getTamanio() {
  * @param dato  dato a insertar
  */
 template<class T>
-void Lista<T>::insertar(int pos, T dato) {
-    int cont = 0;
+void Lista<T>::insertar(T dato) {
     nodo<T> *aux=inicio;
 
-    if (pos==0){
-        nodo<T> *nn = new nodo<T>(dato, inicio);
+    if (aux == NULL) {
+        nodo<T> *nn = new nodo<T>(dato, NULL);
         inicio = nn;
         return;
     }
 
-    while(cont < pos-1 && aux != NULL){
-        cont++;
+    while (aux->getNext() != NULL) {
         aux = aux->getNext();
     }
-    if (aux == NULL )
-        throw 1;
 
-    nodo<T> *nn = new nodo<T>(dato, aux ->getNext());
+    nodo<T> *nn = new nodo<T>(dato, NULL);
     aux->setNext(nn);
+}
+
 }
 
 
@@ -150,24 +131,6 @@ void Lista<T>::insertar(int pos, T dato) {
 template<class T>
 void Lista<T>::insertarPrimero(T dato) {
     nodo <T> *nm = new nodo<T>(dato, inicio);
-
-}
-
-
-/**
- * Inserta un nodo con el dato en la ultima posicion
- * @tparam T
- * @param dato dato a insertar
- */
-template<class T>
-void Lista<T>::insertarUltimo(T dato) {
-    nodo<T> *aux=inicio;
-    int count=0;
-    while (aux!=NULL){
-        count++;
-        aux = aux->getNext();
-    }
-    Lista<T>::insertar(count, dato);
 
 }
 
@@ -244,6 +207,7 @@ T Lista<T>::mails() {
  * @param pos posicion donde se desea reemplazar
  * @param dato nuevo dato a almacenar
  */
+
 template<class T>
 void Lista<T>::reemplazar(int pos, T dato) {
     unsigned i=0;
