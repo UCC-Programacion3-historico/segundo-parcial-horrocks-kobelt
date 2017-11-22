@@ -1,5 +1,7 @@
 #include "email.h"
 
+
+
 //constructor
 email::email(string de, string para, string fecha, string asunto, string contenido) {
     from = de;
@@ -15,6 +17,16 @@ email::email(email *&pEmail) {
     this->to = pEmail->to;
     this->subject = pEmail->subject;
     this->content = pEmail->content;
+}
+
+void email::print() {
+    cout<<"ID: "<<id<<endl;
+    cout<<"From: "<<from<<endl;
+    cout<<"To: "<<to<<endl;
+    cout<<"Date: "<<date<<endl;
+    cout<<"Subject: "<<subject<<endl;
+    cout<<"Content: "<<content<<endl;
+    cout<<"-------------------------------------------------------------------"<<endl;
 }
 
 unsigned long email::getId() const {

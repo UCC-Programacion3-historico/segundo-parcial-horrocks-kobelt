@@ -8,7 +8,7 @@
 
 using namespace std;
 
-template<class S, class E>
+
 class nodoArbol {
 private:
 

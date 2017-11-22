@@ -46,16 +46,16 @@ public:
     nodo<T> *getInicio(){return inicio;}
 };
 
-template <class T>
+template<class T>
 Lista<T>::Lista() {
     inicio = NULL;
 }
 
-template <class T>
+template<class T>
 Lista<T>::Lista(const Lista<T> &li) {}
 
-template <class T>
-Lista<email>::~Lista() {
+template<class T>
+Lista<T>::~Lista() {
     nodo<T> *aux = inicio;
     nodo<T> *ant = inicio;
 
@@ -73,7 +73,7 @@ Lista<email>::~Lista() {
  * @tparam T
  * @return true si la lista esta vacia, sino false
  */
-template <class T>
+template<class T>
 bool Lista<T>::esVacia() {
     return inicio == NULL;
 }
@@ -120,7 +120,6 @@ void Lista<T>::insertar(T dato) {
     aux->setNext(nn);
 }
 
-}
 
 
 /**

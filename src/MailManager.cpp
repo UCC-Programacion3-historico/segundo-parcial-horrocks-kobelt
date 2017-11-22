@@ -6,62 +6,41 @@
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
 
-/**
- * Constructor
- */
 MailManager::MailManager() {
     contador = 0;
 }
 
-/**
- * Agrega un mail al gestor
- * @param m mail a agregar
- */
+
 void MailManager::addMail(email m) {
 
     m.setId(contador++);
-    arbolFecha.put(m.getDate(), &m);
-    arbolFrom.put(m.getFrom(), &m);
+    arbolFecha->putD(m);
+    arbolFrom->putF(m);
 
-    //insertar palabra por palabra del asunto dentro del arbol
-    string word;
-    char limite = ' ';
-    word = m.getSubject();
-    char *temp = strtok((char *) word.c_str(), &limite);
-    while (temp != NULL) {
-        arbolPalabra.put(temp, &m);
-        temp = strtok(NULL, &limite);
-    }
+//
+//    string word;
+//    char limite = ' ';
+//    word = m.getSubject();
+//    char *temp = strtok((char *) word.c_str(), &limite);
+//    while (temp != NULL) {
+//        arbolPalabra.put(temp, &m);
+//        temp = strtok(NULL, &limite);
+//    }
 
 
 }
 
 
-/**
- * Elimina un mail del gestor
- * @param id identificador del mail a borrar
- */
 void MailManager::deleteMail(email m) {
 
-    arbolFrom.remove(m.getFrom(), &m);
-    arbolFecha.remove(m.getDate(), &m);
-
 
 }
 
 
-/**
- * Devuelve una lista de mails ordenados por fecha
- * @return lista de mails ordenados
- */
 vector<email> MailManager::getSortedByDate() {
 
-    vector<email *> datos;
     vector<email> ret;
-    arbolFecha.inorder(datos);
-    for (unsigned i = 0; i < datos.size(); i++) {
-        ret.push_back(datos[i]);
-    }
+    arbolFecha->inorder(ret);
     return ret;
 }
 
@@ -75,17 +54,18 @@ vector<email> MailManager::getSortedByDate() {
  */
 vector<email> MailManager::getSortedByDate(string desde, string hasta) {
 
-    vector<email *> temporal;
-    vector<email> ret;
-    arbolFecha.inorder(temporal);
-    for (unsigned i = 0; i < temporal.size(); i++) {
+    vector<email> ret, temporal;
+    arbolFecha->inorder(temporal);
 
-        if (temporal[i]->getDate() >= desde && temporal[i]->getDate() <= hasta) {
+    for (unsigned int i = 0; i < temporal.size(); i++) {
+
+        if (temporal[i].date >= desde && temporal[i].date <= hasta) {
             ret.push_back(temporal[i]);
         }
-        return ret;
     }
+    return ret;
 }
+
 
 
 /**
@@ -94,9 +74,8 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
  */
 vector<email> MailManager::getSortedByFrom() {
 
-    vector<email *> temporal;
-    vector<email> ret; // TODO Copiar todo al vector
-    arbolFecha.inorder(temporal);
+    vector<email> ret;
+    arbolFrom->inorder(ret);
     return ret;
 }
 
@@ -109,7 +88,7 @@ vector<email> MailManager::getSortedByFrom() {
 vector<email> MailManager::getByFrom(string from) {
 
     vector<email> ret;
-    ret = arbolFrom.getMails(from);
+    arbolFrom->buscar(ret, from);
     return ret;
 }
 

@@ -13,9 +13,8 @@ using namespace std;
 class MailManager {
 private:
 
-    Arbol<string, email*> arbolFecha;
-    Arbol<string, email*> arbolFrom;
-    Arbol<string, email*> arbolPalabra;
+    Arbol *arbolFecha;
+    Arbol *arbolFrom;
     unsigned int contador;
 
 public:

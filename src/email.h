@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 #ifndef EMAIL_H
 #define EMAIL_H
@@ -48,6 +49,8 @@ public:
     const string &getContent() const;
 
     void setContent(const string &content);
+
+    void print();
 
 };
 

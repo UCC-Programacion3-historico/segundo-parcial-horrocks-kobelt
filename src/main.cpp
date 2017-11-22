@@ -1,5 +1,8 @@
 #include <iostream>
 #include "MailManager.h"
+#include <vector>
+
+using namespace std;
 
 int main() {
     int eleccion;
@@ -17,17 +20,21 @@ int main() {
 
     cin >> eleccion;
 
+    vector<email> ema;
     MailManager M;
 
-    email p;
+    email p1 ("juan@", "carlos@", "2018-10-2", "hola", "hola todo bien?");
 
     switch (eleccion) {
         case 1:
-            M.addMail(p);
+            M.addMail(p1);
+            ema = M.getSortedByDate();
+            ema[0].print();
+
             break;
 
         case 2:
-            M.deleteMail(p);
+            M.deleteMail(p1);
             break;
 
         case 3:
