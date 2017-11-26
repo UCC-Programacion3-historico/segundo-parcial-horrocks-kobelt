@@ -27,7 +27,9 @@ public:
 
     void inorder(vector<email> &resultado);
 
-    nodoArbol *remover(email m); //TODO
+    nodoArbol *removerFecha(email m);
+
+    nodoArbol *removerFrom(email m);
 
 
 };

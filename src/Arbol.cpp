@@ -22,7 +22,7 @@ void Arbol::putD(email m) {
         raiz = new nodoArbol(m);
     } else {
         raiz->putDate(m);
-    }
+   }
 }
 
 void Arbol::inorder(vector<email> &resultado){
@@ -39,4 +39,22 @@ void Arbol::buscar(vector<email> &resultado, string palabra) {
     else {
         raiz->search(resultado, palabra);
     }
+}
+
+void Arbol::removeDe(email m) {
+    if (raiz == NULL)
+        throw 3;
+    else {
+        raiz->removerFrom(m);
+    }
+}
+
+void Arbol::removeFec(email m) {
+    if (raiz == NULL)
+        throw 4;
+    else {
+        raiz->removerFecha(m);
+        }
+
+
 }

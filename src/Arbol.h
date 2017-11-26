@@ -18,7 +18,9 @@ public:
 
     void putD(email m);
 
-    void remove(email m);//TODO
+    void removeFec(email m);
+
+    void removeDe(email m);
 
     void buscar (vector<email> &resultado, string palabra);
 

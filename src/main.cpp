@@ -30,7 +30,6 @@ int main() {
             M.addMail(p1);
             ema = M.getSortedByDate();
             ema[0].print();
-
             break;
 
         case 2:

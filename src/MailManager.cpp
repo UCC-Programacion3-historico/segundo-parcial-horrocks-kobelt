@@ -33,6 +33,11 @@ void MailManager::addMail(email m) {
 
 void MailManager::deleteMail(email m) {
 
+    arbolFrom->removeDe(m);
+    arbolFecha->removeFec(m);
+
+    cout<<"El mail de " << m.getFrom() << " fue eliminado correctamente." << endl;
+
 
 }
 
