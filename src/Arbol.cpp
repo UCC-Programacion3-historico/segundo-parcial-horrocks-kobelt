@@ -22,14 +22,14 @@ void Arbol::putD(email m) {
         raiz = new nodoArbol(m);
     } else {
         raiz->putDate(m);
-   }
+    }
 }
 
 void Arbol::inorder(vector<email> &resultado){
     if (raiz != NULL){
         raiz->inorder(resultado);
     }else
-        throw "El arbol esta vacio";
+        throw 3;
 
 }
 

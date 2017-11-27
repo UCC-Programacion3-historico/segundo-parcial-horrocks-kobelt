@@ -1,8 +1,9 @@
 #include <string>
 #include <vector>
-//#include "email.h"
+#include "email.h"
 #include "Arbol.h"
-//#include "Lista.h"
+#include "Lista.h"
+#include "HashMap.h"
 
 #ifndef MAILMANAGER_H
 #define MAILMANAGER_H
@@ -15,6 +16,7 @@ private:
 
     Arbol *arbolFecha;
     Arbol *arbolFrom;
+    HashMap<string, email> tabla;
     unsigned int contador;
 
 public:

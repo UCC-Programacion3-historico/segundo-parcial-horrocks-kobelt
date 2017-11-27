@@ -5,8 +5,10 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
-
 MailManager::MailManager() {
+    arbolFecha = new Arbol();
+    arbolFrom = new Arbol();
+    tabla = new HashMap<string, email>();
     contador = 0;
 }
 
@@ -17,15 +19,15 @@ void MailManager::addMail(email m) {
     arbolFecha->putD(m);
     arbolFrom->putF(m);
 
-//
-//    string word;
-//    char limite = ' ';
-//    word = m.getSubject();
-//    char *temp = strtok((char *) word.c_str(), &limite);
-//    while (temp != NULL) {
-//        arbolPalabra.put(temp, &m);
-//        temp = strtok(NULL, &limite);
-//    }
+
+    string word;
+    char limite = ' ';
+    word = m.getSubject();
+    char *temp = strtok((char *) word.c_str(), &limite);
+    while (temp != NULL) {
+        tabla.put(temp, m);
+        temp = strtok(NULL, &limite);
+    }
 
 
 }
@@ -105,7 +107,9 @@ vector<email> MailManager::getByFrom(string from) {
  * @return lista de mails que contienen dicha/s palabra/s
  */
 vector<email> MailManager::getByQuery(string query) {
+
     vector<email> ret;
+    ret.push_back(tabla.get(query));
     return ret;
 }
 

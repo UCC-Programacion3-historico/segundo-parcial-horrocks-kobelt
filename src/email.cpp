@@ -26,7 +26,7 @@ void email::print() {
     cout<<"Date: "<<date<<endl;
     cout<<"Subject: "<<subject<<endl;
     cout<<"Content: "<<content<<endl;
-    cout<<"-------------------------------------------------------------------"<<endl;
+    cout<<"-------------------------------------"<<endl;
 }
 
 unsigned long email::getId() const {

@@ -7,7 +7,7 @@ nodoArbol::nodoArbol(email m) {
 
 }
 
-void nodoArbol::putDate(email m) {
+void nodoArbol::putFrom(email m) {
 
     if (m.getFrom() == valores.getDato(0).getFrom())
 
@@ -31,12 +31,12 @@ void nodoArbol::putDate(email m) {
     }
 }
 
-void nodoArbol::putFrom(email m) {
+void nodoArbol::putDate(email m) {
     if (m.getDate() == valores.getDato(0).getDate())
 
         valores.insertar(m);
 
-    else if (m.getDate() < valores.getDato(0).getDate()) {
+    else if (m.getDate() > valores.getDato(0).getDate()) {
         if (izq == NULL) {
             izq = new nodoArbol(m);
 
@@ -51,7 +51,6 @@ void nodoArbol::putFrom(email m) {
             der->putFrom(m);
     }
 }
-//TODO
 
 nodoArbol *nodoArbol::removerFecha(email m) {
     nodoArbol *aux;
@@ -93,7 +92,7 @@ nodoArbol *nodoArbol::removerFrom(email m) {
         return izq;
     } else if (m.getFrom() < valores.getDato(0).getFrom()) {
         if (izq == NULL)
-            throw 'No hay valor';
+            throw 3;
         else {
             aux = izq;
             izq = izq->removerFrom(m);
@@ -102,7 +101,7 @@ nodoArbol *nodoArbol::removerFrom(email m) {
         }
     } else {
         if (der == NULL)
-            throw 'No hay valor';
+            throw 3;
         else {
             aux = der;
             der = der->removerFrom(m);
@@ -117,8 +116,9 @@ void nodoArbol::inorder(vector<email> &resultado) {
 
     if (izq != NULL) izq->inorder(resultado);
 
-    for (unsigned i = 0; i < valores.getTamanio(); i++)
+    for (unsigned i = 0; i < valores.getTamanio(); i++) {
         resultado.push_back(valores.getDato(i));
+    }
 
     if (der != NULL) der->inorder(resultado);
 }
