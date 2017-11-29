@@ -19,7 +19,7 @@ void nodoArbol::putFrom(email m) {
             izq = new nodoArbol(m);
 
         } else
-            izq->putDate(m);
+            izq->putFrom(m);
 
     } else {
 
@@ -27,7 +27,7 @@ void nodoArbol::putFrom(email m) {
             der = new nodoArbol(m);
 
         } else
-            der->putDate(m);
+            der->putFrom(m);
     }
 }
 
@@ -41,14 +41,14 @@ void nodoArbol::putDate(email m) {
             izq = new nodoArbol(m);
 
         } else
-            izq->putFrom(m);
+            izq->putDate(m);
 
     } else {
         if (der == NULL) {
             der = new nodoArbol(m);
 
         } else
-            der->putFrom(m);
+            der->putDate(m);
     }
 }
 
