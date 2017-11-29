@@ -63,7 +63,7 @@ template<class K, class T>
 void HashMap<K, T>::put(K clave, T valor) {
     unsigned int pos = hashFuncP(clave) % tamanio;
     if (tabla[pos] != NULL)
-        throw 1;
+        return put(clave+1, valor);
 
     tabla[pos] = new HashEntry<K, T>(clave, valor);
 }

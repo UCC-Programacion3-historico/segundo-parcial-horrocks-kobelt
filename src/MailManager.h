@@ -16,7 +16,7 @@ private:
 
     Arbol *arbolFecha;
     Arbol *arbolFrom;
-    HashMap<string, email> tabla;
+    //HashMap<string, email> tabla;
     unsigned int contador;
 
 public:
