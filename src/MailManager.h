@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <sstream>
 #include "email.h"
 #include "Arbol.h"
 #include "Lista.h"
@@ -16,10 +17,13 @@ private:
 
     Arbol *arbolFecha;
     Arbol *arbolFrom;
-    //HashMap<string, email> tabla;
+    HashMap<string, email> *tabla;
     unsigned int contador;
 
 public:
+
+    static unsigned int hashFunc(string clave);
+
 
     MailManager();
 

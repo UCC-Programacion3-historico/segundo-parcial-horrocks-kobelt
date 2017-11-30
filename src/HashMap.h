@@ -6,6 +6,8 @@
 template<class K, class T>
 class HashMap {
 private:
+    Lista<HashEntry<K,T>*> *tablaL;
+
     HashEntry<K, T> **tabla;
 
     unsigned int tamanio;
@@ -13,6 +15,8 @@ private:
     static unsigned int hashFunc(K clave);
 
     unsigned int (*hashFuncP)(K clave);
+
+    Lista<email> lisHash;
 
 
 public:
@@ -62,8 +66,10 @@ T HashMap<K, T>::get(K clave) {
 template<class K, class T>
 void HashMap<K, T>::put(K clave, T valor) {
     unsigned int pos = hashFuncP(clave) % tamanio;
+
+    tablaL->insertarPrimero( new HashEntry<K,T>(clave,valor));
     if (tabla[pos] != NULL)
-        return put(clave+1, valor);
+        lisHash.insertar(valor);
 
     tabla[pos] = new HashEntry<K, T>(clave, valor);
 }

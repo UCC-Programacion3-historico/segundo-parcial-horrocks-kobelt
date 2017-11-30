@@ -5,10 +5,13 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
+
+
 MailManager::MailManager() {
+
     arbolFecha = new Arbol();
     arbolFrom = new Arbol();
-    //tabla = new HashMap<string, email>();
+    tabla = new HashMap<string, email>(4330, hashFunc);
     contador = 0;
 }
 
@@ -19,15 +22,25 @@ void MailManager::addMail(email m) {
     arbolFecha->putD(m);
     arbolFrom->putF(m);
 
+    //cargo por contenido
+    string word = m.content;
+    istringstream iss(word);
+    do
+    {
+        string subs;
+        iss >> subs;
+        tabla->put(subs,m);
+    } while (iss);
 
-//    string word;
-//    char limite = ' ';
-//    word = m.getSubject();
-//    char *temp = strtok((char *) word.c_str(), &limite);
-//    while (temp != NULL) {
-//        tabla.put(temp, m);
-//        temp = strtok(NULL, &limite);
-//    }
+    //cargo por asunto
+    word = m.subject;
+    istringstream iss(word);
+    do{
+        string subs;
+        iss >> subs;
+        tabla->put(subs, m);
+
+    }while(iss);
 
 
 }
@@ -109,8 +122,16 @@ vector<email> MailManager::getByFrom(string from) {
 vector<email> MailManager::getByQuery(string query) {
 
     vector<email> ret;
-   // ret.push_back(tabla.get(query));
+    ret.push_back(tabla.get(query));
     return ret;
+}
+
+unsigned int MailManager::hashFunc(string clave) {
+    unsigned int sum=0;
+    for (int i=0; i<clave.size(); i++){
+        sum += clave[i] * clave[i];
+    }
+    return sum;
 }
 
 #pragma clang diagnostic pop

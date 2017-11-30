@@ -2,6 +2,7 @@
 #define HASHENTRY_H
 
 #include <iostream>
+#include "Lista.h"
 
 template<class K,class T>
 class HashEntry {
