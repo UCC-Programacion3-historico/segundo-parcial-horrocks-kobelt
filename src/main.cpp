@@ -12,7 +12,7 @@ int main() {
     email p1 ("juan", "carlos", "2018-10-02", "hola", "hola todo bien?");
     email p2("pedro", "horacio", "2018-01-01", "que haces", "que se cuenta");
     email p3("esteban", "juan", "2017-08-20", "que haces", "que se cuenta");
-    email p4("carlos", "juan", "2017-03-05", "que haces", "que se cuenta");
+    email p4("carlos", "josesito", "2017-03-05", "que haces", "morocho");
     email p5("miguel", "juan", "2017-05-12", "que haces", "que se cuenta");
     email p6("pedro", "juan", "2016-11-04", "que haces", "que se cuenta");
 
@@ -58,7 +58,7 @@ int main() {
     }
     cout<<"----5---"<<endl;
 
-    ema = M.getByQuery("hola");
+    ema = M.getByQuery("morocho");
     for(int i=0; i<ema.size(); i++){
         ema[i].print();
     }
