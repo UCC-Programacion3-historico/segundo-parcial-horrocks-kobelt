@@ -58,6 +58,11 @@ int main() {
     }
     cout<<"----5---"<<endl;
 
+    ema = M.getByQuery("hola");
+    for(int i=0; i<ema.size(); i++){
+        ema[i].print();
+    }
+
 
 
 
