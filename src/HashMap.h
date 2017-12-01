@@ -67,7 +67,7 @@ template<class K, class T>
 void HashMap<K, T>::put(K clave, T valor) {
     unsigned int pos = hashFuncP(clave) % tamanio;
 
-    tablaL->insertarPrimero( new HashEntry<K,T>(clave,valor));
+    tablaL->insertar(new HashEntry<K,T>(clave,valor));
     if (tabla[pos] != NULL)
         lisHash.insertar(valor);
 

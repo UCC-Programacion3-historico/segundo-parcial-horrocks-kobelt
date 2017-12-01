@@ -22,25 +22,25 @@ void MailManager::addMail(email m) {
     arbolFecha->putD(m);
     arbolFrom->putF(m);
 
-    //cargo por contenido
-    string word = m.content;
-    istringstream iss(word);
-    do
-    {
-        string subs;
-        iss >> subs;
-        tabla->put(subs,m);
-    } while (iss);
-
-    //cargo por asunto
-    word = m.subject;
-    istringstream iss(word);
-    do{
-        string subs;
-        iss >> subs;
-        tabla->put(subs, m);
-
-    }while(iss);
+//    //cargo por contenido
+//    string word = m.content;
+//    istringstream iss(word);
+//    do
+//    {
+//        string subs;
+//        iss >> subs;
+//        tabla->put(subs,m);
+//    } while (iss);
+//
+//    //cargo por asunto
+//    word = m.subject;
+//    istringstream is(word);
+//    do{
+//        string subs;
+//        is >> subs;
+//        tabla->put(subs, m);
+//
+//    }while(iss);
 
 
 }
@@ -122,7 +122,7 @@ vector<email> MailManager::getByFrom(string from) {
 vector<email> MailManager::getByQuery(string query) {
 
     vector<email> ret;
-    ret.push_back(tabla.get(query));
+    //ret.push_back(tabla.get(query));
     return ret;
 }
 

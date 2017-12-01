@@ -146,3 +146,27 @@ void nodoArbol::search(vector<email> &resultado, string palabra) {
     }
 }
 
+nodoArbol *nodoArbol::getIzq() const {
+    return izq;
+}
+
+void nodoArbol::setIzq(nodoArbol *izq) {
+    nodoArbol::izq = izq;
+}
+
+nodoArbol *nodoArbol::getDer() const {
+    return der;
+}
+
+void nodoArbol::setDer(nodoArbol *der) {
+    nodoArbol::der = der;
+}
+
+const Lista<email> &nodoArbol::getValores() const {
+    return valores;
+}
+
+void nodoArbol::setValores(const Lista<email> &valores) {
+    nodoArbol::valores = valores;
+}
+

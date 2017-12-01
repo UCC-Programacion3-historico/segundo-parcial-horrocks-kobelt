@@ -13,9 +13,22 @@ class nodoArbol {
 private:
 
     nodoArbol *izq, *der;
+
     Lista<email> valores;
 
+
 public:
+    const Lista<email> &getValores() const;
+
+    void setValores(const Lista<email> &valores);
+
+    nodoArbol *getIzq() const;
+
+    void setIzq(nodoArbol *izq);
+
+    nodoArbol *getDer() const;
+
+    void setDer(nodoArbol *der);
 
     nodoArbol(email m);
 
