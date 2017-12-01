@@ -43,6 +43,8 @@ public:
 
     void vaciar();
 
+    T buscar (T dato);
+
     nodo<T> *getInicio(){return inicio;}
 };
 
@@ -229,6 +231,23 @@ void Lista<T>::reemplazar(int pos, T dato) {
  */
 template<class T>
 void Lista<T>::vaciar() {}
+
+
+template <class T>
+T Lista<T>::buscar(T dato) {
+    unsigned int i=0;
+    nodo<T> *aux = inicio;
+
+    while (aux->getDato() != dato){
+        aux = aux->getNext();
+        i++;
+    }
+    if(aux == NULL)
+        throw 3;
+
+    return i;
+
+}
 
 
 

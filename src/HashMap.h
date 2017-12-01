@@ -30,6 +30,8 @@ public:
 
     void remove(K clave);
 
+    int posicion();
+
     ~HashMap();
 
     bool esVacio();
@@ -59,9 +61,11 @@ HashMap<K, T>::~HashMap() {
 template<class K, class T>
 T HashMap<K, T>::get(K clave) {
     unsigned int pos = hashFuncP(clave) % tamanio;
-    if (tablaL[pos].getDato(0) == NULL)
+    int lugar;
+    lugar = tablaL[pos].buscar(tablaL);
+    if (tablaL[pos].getDato(lugar) == NULL)
         throw 2;
-    return tablaL[pos].getDato(0)->getDato();
+    return tablaL[pos].getDato(lugar)->getDato();
 }
 
 template<class K, class T>
@@ -110,6 +114,11 @@ HashMap<K, T>::HashMap(unsigned int tamanio, unsigned int (*fp)(K)) {
         tabla[i] = NULL;
     }
 }
+
+template <class K, class T>
+int HashMap<K, T>::posicion(){
+    Lista<T> *aux = aux->getInicio();
+};
 
 
 #endif //HASHMAP_H
