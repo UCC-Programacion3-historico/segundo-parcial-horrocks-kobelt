@@ -9,7 +9,20 @@ class HashEntry {
 private:
     K key;
     T dato;
+    HashEntry *next;
+
 public:
+    HashEntry(K key, T dato, HashEntry *next) : key(key), dato(dato), next(next) {}
+
+
+    HashEntry *getNext() const {
+        return next;
+    }
+
+    void setNext(HashEntry *next) {
+        HashEntry::next = next;
+    }
+
     HashEntry(K key, T dato) : key(key), dato(dato) {}
 
     K getKey()  {

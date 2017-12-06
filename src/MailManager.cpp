@@ -97,6 +97,7 @@ vector<email> MailManager::getSortedByFrom() {
     vector<email> ret;
     arbolFrom->inorder(ret);
     return ret;
+
 }
 
 
@@ -111,6 +112,7 @@ vector<email> MailManager::getByFrom(string from) {
     arbolFrom->buscar(ret, from);
     return ret;
 }
+
 
 
 /**
