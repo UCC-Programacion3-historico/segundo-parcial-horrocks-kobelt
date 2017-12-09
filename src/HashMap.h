@@ -6,7 +6,7 @@
 template<class K, class T>
 class HashMap {
 private:
-    Lista<HashEntry<K,T>*> *tablaL;
+    //Lista<HashEntry<K,T>*> *tablaL;
 
     HashEntry<K, T> **tabla;
 
@@ -16,7 +16,7 @@ private:
 
     unsigned int (*hashFuncP)(K clave);
 
-    Lista<email> lisHash;
+    HashEntry<K, T> *inicio;
 
 
 public:
@@ -40,8 +40,9 @@ template<class K, class T>
 HashMap<K, T>::HashMap(unsigned int tamanio) {
     this->tamanio = tamanio;
     hashFuncP = hashFunc;
-    tablaL =new Lista<T> [tamanio];
+    //tablaL =new Lista<T> [tamanio];
     tabla = new HashEntry<K, T> *[tamanio];
+    inicio = NULL;
     for (int i = 0; i < tamanio; i++) {
         tabla[i] = NULL;
     }
@@ -93,14 +94,14 @@ void HashMap<K, T>::put(K clave, T valor) {
         HashEntry<K, T> *aux = tabla[pos]->getNext();
 
         while (aux != NULL) {
-            aux->getNext();
+           aux = aux->getNext();
         }
         //cuando encontro que el siguiente dato es nulo, seteo el dato entrante
-        HashEntry<K, T> *nuevo = new HashEntry<K, T>(clave, valor, NULL);
+        HashEntry<K, T> *nuevo = new HashEntry<K, T>(clave, valor, nullptr);
         aux->setNext(nuevo);
 
     }else //si no estaba utlizada la posicion, cargo un hashentry nuevo
-        tabla[pos] = new HashEntry<K, T>(clave, valor, NULL);
+        tabla[pos] = new HashEntry<K, T>(clave, valor, nullptr);
 }
 
 template<class K, class T>
@@ -112,11 +113,11 @@ void HashMap<K, T>::remove(K clave) {
         //si la posicion no devuelve la key que quiero, busca las otras en la misma pos
         if (tabla[pos]->getKey() != clave){
 
-            while (aux->getNext()->getKey() != clave || aux->getNext() == NULL){
+            while (aux->getNext()->getKey() != clave || aux->getNext() == nullptr){
                 aux = aux->getNext();
             }
             //si no encontro, lanza error
-            if (aux == NULL)
+            if (aux == nullptr)
                 throw 4;
             else {
                 //si encontro, guarda en temporal la que quiere borrar y setea a anterior a la siguiente
@@ -152,7 +153,7 @@ template<class K, class T>
 HashMap<K, T>::HashMap(unsigned int tamanio, unsigned int (*fp)(K)) {
     this->tamanio = tamanio;
     this->hashFuncP = fp;
-    tablaL = new Lista<HashEntry<K, T>*> [tamanio];
+    //tablaL = new Lista<HashEntry<K, T>*> [tamanio];
     tabla = new HashEntry<K, T> *[tamanio];
     for (int i = 0; i < tamanio; i++) {
         tabla[i] = NULL;

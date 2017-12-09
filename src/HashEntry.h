@@ -12,15 +12,22 @@ private:
     HashEntry *next;
 
 public:
-    HashEntry(K key, T dato, HashEntry *next) : key(key), dato(dato), next(next) {}
+    HashEntry(K k, T d, HashEntry* n){
+        key = k;
+        dato = d;
+        next = n;
+    }
 
+    HashEntry(){
+        next = NULL;
+    }
 
     HashEntry *getNext() const {
         return next;
     }
 
-    void setNext(HashEntry *next) {
-        HashEntry::next = next;
+    void setNext(HashEntry *Next) {
+        this->next = Next;
     }
 
     HashEntry(K key, T dato) : key(key), dato(dato) {}
