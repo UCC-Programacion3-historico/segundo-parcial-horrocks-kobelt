@@ -122,7 +122,7 @@ TEST_F(testFuncionamiento, pruebaBorrar) {
     unsigned long old = res.size();
 
     for (int i = 0; i < 37; i++) {
-        mm->deleteMail(res[i].id);
+        mm->deleteMail(res[i]);
     }
 
     res = mm->getByQuery("Hola");

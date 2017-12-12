@@ -14,7 +14,7 @@ int main() {
     email p3("esteban", "juan", "2017-08-20", "que haces", "que se cuenta");
     email p4("carlos", "josesito", "2017-03-05", "que haces", "morocho");
     email p5("miguel", "juan", "2017-05-12", "que haces", "que se cuenta");
-    email p6("pedro", "juan", "2016-11-04", "que haces", "que se cuenta");
+    email p6("pedro", "juan", "2016-11-04", "que haces", "que se morocho");
 
 
     M.addMail(p1);
