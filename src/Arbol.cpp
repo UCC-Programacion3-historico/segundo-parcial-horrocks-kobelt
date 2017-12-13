@@ -9,7 +9,7 @@ Arbol::~Arbol() {
 
 }
 
-void Arbol::putF(email m){
+void Arbol::putF(email &m){
     if (raiz == NULL) {
         raiz = new nodoArbol(m);
     } else {
@@ -17,7 +17,7 @@ void Arbol::putF(email m){
     }
 }
 
-void Arbol::putD(email m) {
+void Arbol::putD(email &m) {
     if (raiz == NULL) {
         raiz = new nodoArbol(m);
     } else {
@@ -41,7 +41,7 @@ void Arbol::buscar(vector<email> &resultado, string palabra) {
     }
 }
 
-void Arbol::removeDe(email m) {
+void Arbol::removeDe(email &m) {
     if (raiz == NULL)
         throw 3;
     else {
@@ -49,7 +49,7 @@ void Arbol::removeDe(email m) {
     }
 }
 
-void Arbol::removeFec(email m) {
+void Arbol::removeFec(email &m) {
     if (raiz == NULL)
         throw 4;
     else {

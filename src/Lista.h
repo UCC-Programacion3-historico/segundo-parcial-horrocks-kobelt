@@ -29,7 +29,7 @@ public:
 
     int getTamanio();
 
-    void insertar(T dato);
+    void insertar(T &dato);
 
     void insertarPrimero(T dato);
 
@@ -105,7 +105,7 @@ int Lista<T>::getTamanio() {
  * @param dato  dato a insertar
  */
 template<class T>
-void Lista<T>::insertar(T dato) {
+void Lista<T>::insertar(T &dato) {
     nodo<T> *aux=inicio;
 
     if (aux == NULL) {

@@ -7,7 +7,7 @@ nodoArbol::nodoArbol(email m) {
 
 }
 
-void nodoArbol::putFrom(email m) {
+void nodoArbol::putFrom(email &m) {
 
     if (m.getFrom() == valores.getDato(0).getFrom())
 
@@ -31,7 +31,7 @@ void nodoArbol::putFrom(email m) {
     }
 }
 
-void nodoArbol::putDate(email m) {
+void nodoArbol::putDate(email &m) {
     if (m.getDate() == valores.getDato(0).getDate())
 
         valores.insertar(m);
@@ -52,7 +52,7 @@ void nodoArbol::putDate(email m) {
     }
 }
 
-nodoArbol *nodoArbol::removerFecha(email m) {
+nodoArbol *nodoArbol::removerFecha(email &m) {
     nodoArbol *aux;
     if (m.getDate() == valores.getDato(0).getDate()) {
         if (der != NULL) {
@@ -82,7 +82,7 @@ nodoArbol *nodoArbol::removerFecha(email m) {
     return this;
 }
 
-nodoArbol *nodoArbol::removerFrom(email m) {
+nodoArbol *nodoArbol::removerFrom(email &m) {
     nodoArbol *aux;
     if (m.getFrom() == valores.getDato(0).getFrom()) {
         if (der != NULL) {

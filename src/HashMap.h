@@ -24,11 +24,11 @@ public:
 
     HashMap(unsigned int tamanio, unsigned int (*hashFuncP)(K clave));
 
-    T get(K clave);
+    void get(K clave, vector<email> &resultado);
 
     void put(K clave, T valor);
 
-    void remove(K clave);
+    void remove(K clave, int id);
 
     ~HashMap();
 
@@ -40,7 +40,6 @@ template<class K, class T>
 HashMap<K, T>::HashMap(unsigned int tamanio) {
     this->tamanio = tamanio;
     hashFuncP = hashFunc;
-    //tablaL =new Lista<T> [tamanio];
     tabla = new HashEntry<K, T> *[tamanio];
     inicio = NULL;
     for (int i = 0; i < tamanio; i++) {
@@ -58,7 +57,8 @@ HashMap<K, T>::~HashMap() {
 }
 
 template<class K, class T>
-T HashMap<K, T>::get(K clave) {
+void HashMap<K, T>::get(K clave, vector<email> &resultado) {
+    bool bander = false;
     unsigned int pos = hashFuncP(clave) % tamanio;
 
     if (tabla[pos] == NULL)
@@ -66,15 +66,16 @@ T HashMap<K, T>::get(K clave) {
 
     else {
         HashEntry<K, T> *aux = tabla[pos];
-        while (aux->getKey() != clave && aux != NULL) {
+
+        while (aux != NULL) {
+            if (aux->getKey() == clave) {
+                bander = true;
+                resultado.push_back(aux->getDato());
+            }
             aux = aux->getNext();
         }
-
-        if (aux == NULL)
-            throw 2;
-
-        if (aux->getKey() == clave)
-            return aux->getDato();
+        if (bander == false)
+            throw 5;
     }
 }
 
@@ -99,21 +100,24 @@ void HashMap<K, T>::put(K clave, T valor) {
 }
 
 template<class K, class T>
-void HashMap<K, T>::remove(K clave) {
+void HashMap<K, T>::remove(K clave, int id) {
     unsigned int pos = hashFuncP(clave) % tamanio;
 
     if (tabla[pos] != NULL) {
-        HashEntry<K, T> *aux;
+        HashEntry<K, T> *aux = tabla[pos];
+
         //si la posicion no devuelve la key que quiero, busca las otras en la misma pos
         if (tabla[pos]->getKey() != clave) {
 
-            while (aux->getNext()->getKey() != clave || aux->getNext() == nullptr) {
+            while (aux != NULL && aux->getDato().getId() == id) {
                 aux = aux->getNext();
             }
+
             //si no encontro, lanza error
-            if (aux == nullptr)
+            if (aux == NULL)
                 throw 4;
             else {
+
                 //si encontro, guarda en temporal la que quiere borrar y setea a anterior a la siguiente
                 HashEntry<K, T> *tmp = aux->getNext();
                 aux->setNext(aux->getNext()->getNext());
@@ -147,7 +151,6 @@ template<class K, class T>
 HashMap<K, T>::HashMap(unsigned int tamanio, unsigned int (*fp)(K)) {
     this->tamanio = tamanio;
     this->hashFuncP = fp;
-    //tablaL = new Lista<HashEntry<K, T>*> [tamanio];
     tabla = new HashEntry<K, T> *[tamanio];
     for (int i = 0; i < tamanio; i++) {
         tabla[i] = NULL;

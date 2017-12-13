@@ -14,13 +14,13 @@ public:
 
     ~Arbol();
 
-    void putF(email m);
+    void putF(email &m);
 
-    void putD(email m);
+    void putD(email &m);
 
-    void removeFec(email m);
+    void removeFec(email &m);
 
-    void removeDe(email m);
+    void removeDe(email &m);
 
     void buscar (vector<email> &resultado, string palabra);
 

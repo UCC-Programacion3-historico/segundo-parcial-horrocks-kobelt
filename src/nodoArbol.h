@@ -32,17 +32,17 @@ public:
 
     nodoArbol(email m);
 
-    void putFrom(email m);
+    void putFrom(email &m);
 
-    void putDate(email m);
+    void putDate(email &m);
 
     void search (vector<email> &resultado, string palabra);
 
     void inorder(vector<email> &resultado);
 
-    nodoArbol *removerFecha(email m);
+    nodoArbol *removerFecha(email &m);
 
-    nodoArbol *removerFrom(email m);
+    nodoArbol *removerFrom(email &m);
 
 
 };

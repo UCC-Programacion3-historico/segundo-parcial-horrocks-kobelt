@@ -6,7 +6,6 @@
 #pragma ide diagnostic ignored "TemplateArgumentsIssues"
 
 
-
 MailManager::MailManager() {
 
     arbolFecha = new Arbol();
@@ -22,25 +21,25 @@ void MailManager::addMail(email m) {
     arbolFecha->putD(m);
     arbolFrom->putF(m);
 
-    //cargo por contenido
-    string word = m.content;
+    string word;
+//cargo por asunto
+    word = m.subject;
     istringstream iss(word);
-    do
-    {
+    do {
         string subs;
         iss >> subs;
-        tabla->put(subs,m);
+        tabla->put(subs, m);
+
     } while (iss);
 
-    //cargo por asunto
-    word = m.subject;
+//cargo por contenido
+    word = m.content;
     istringstream is(word);
-    do{
+    do {
         string subs;
         is >> subs;
         tabla->put(subs, m);
-
-    }while(iss);
+    } while (is);
 
 
 }
@@ -51,7 +50,11 @@ void MailManager::deleteMail(email m) {
     arbolFrom->removeDe(m);
     arbolFecha->removeFec(m);
 
-    cout<<"El mail de " << m.getFrom() << " fue eliminado correctamente." << endl;
+    string str = m.subject;
+    str.substr(0);
+    tabla->remove(str, m.getId());
+
+    cout << "El mail de " << m.getFrom() << " fue eliminado correctamente." << endl;
 
 
 }
@@ -87,7 +90,6 @@ vector<email> MailManager::getSortedByDate(string desde, string hasta) {
 }
 
 
-
 /**
  * Devuelve una lista de mails ordenados por Remitente
  * @return lista de mails ordenados
@@ -114,7 +116,6 @@ vector<email> MailManager::getByFrom(string from) {
 }
 
 
-
 /**
  * Devuelve una lista de mails que contengan las palabras de 'query'
  * en su asunto o en su contenido
@@ -124,13 +125,13 @@ vector<email> MailManager::getByFrom(string from) {
 vector<email> MailManager::getByQuery(string query) {
 
     vector<email> ret;
-    ret.push_back(tabla->get(query));
+    tabla->get(query, ret);
     return ret;
 }
 
 unsigned int MailManager::hashFunc(string clave) {
-    unsigned int sum=0;
-    for (int i=0; i<clave.size(); i++){
+    unsigned int sum = 0;
+    for (int i = 0; i < clave.size(); i++) {
         sum += clave[i] * clave[i];
     }
     return sum;

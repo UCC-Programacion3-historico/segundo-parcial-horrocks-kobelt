@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Lista.h"
+#include <vector>
 
 template<class K,class T>
 class HashEntry {

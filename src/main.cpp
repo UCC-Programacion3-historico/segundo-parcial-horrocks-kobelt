@@ -6,64 +6,118 @@ using namespace std;
 
 int main() {
 
-    vector<email> ema;
+    vector<email> ema, temporal;
     MailManager M;
 
-    email p1 ("juan", "carlos", "2018-10-02", "hola", "hola todo bien?");
-    email p2("pedro", "horacio", "2018-01-01", "que haces", "que se cuenta");
+    email p1("juan", "carlos", "2018-10-02", "hola", "hola todo bien?");
+    email p2("pedro", "horacio", "2018-01-01", "que", "que se cuenta");
     email p3("esteban", "juan", "2017-08-20", "que haces", "que se cuenta");
     email p4("carlos", "josesito", "2017-03-05", "que haces", "morocho");
-    email p5("miguel", "juan", "2017-05-12", "que haces", "que se cuenta");
+    email p5("miguel", "juan", "2017-05-12", "hola pibe cantina", "que se cuenta");
     email p6("pedro", "juan", "2016-11-04", "que haces", "que se morocho");
 
 
-    M.addMail(p1);
-    M.addMail(p2);
-    M.addMail(p3);
-    M.addMail(p4);
-    M.addMail(p5);
-    M.addMail(p6);
+    int salida = 0;
 
-    cout<<"----0---"<<endl;
+    while (salida == 0) {
 
+        int opcion;
+        cout << "'El Chasqui Mails'" << endl;
+        cout << "Seleccione lo que desee hacer: " << endl;
+        cout << "1 = cargar mail" << endl;
+        cout << "2 = borrar mail" << endl;
+        cout << "3 = ordenar por fecha " << endl;
+        cout << "4 = buscar rango de fechas " << endl;
+        cout << "5 = buscar por destinatario " << endl;
+        cout << "6 = buscar por palabra" << endl;
+        cout << "7 = salir" << endl;
 
-    ema = M.getSortedByDate();
-    for (unsigned i=0; i<ema.size(); i++){
-        ema[i].print();
-   }
+        cin >> opcion;
 
-    cout<<"----1---"<<endl;
+        switch (opcion) {
+            case 1: {
+                string palabra;
+                email j;
 
-    ema = M.getSortedByFrom();
-    for(unsigned i=0; i<ema.size(); i++){
-        ema[i].print();
+                cout << "remitente:" << endl;
+                cin >> palabra;
+                j.setFrom(palabra);
+                cout << "destinatario: " << endl;
+                cin >> palabra;
+                j.setTo(palabra);
+                cout << " fecha: " << endl;
+                cin >> palabra;
+                j.setDate(palabra);
+                cout << "asunto: " << endl;
+                cin >> palabra;
+                j.setSubject(palabra);
+                cout << " contenido" << endl;
+                cin >> palabra;
+                j.setContent(palabra);
+
+                M.addMail(j);
+                temporal.push_back(j);
+
+                break;
+            }
+            case 2: {
+                cout << "ingrese id" << endl;
+                int id, i = 0;
+                cin >> id;
+
+                while (temporal.size() > i && temporal[i].getId() == id) {
+                    i++;
+                }
+
+                M.deleteMail(temporal[i]);
+                break;
+            }
+            case 3: {
+                ema = M.getSortedByDate();
+                for (unsigned i = 0; i < ema.size(); i++) {
+                    ema[i].print();
+                }
+                break;
             }
 
-    cout<<"----2---"<<endl;
-
-    M.deleteMail(p1);
-
-    cout<<"----3---"<<endl;
-
-    ema = M.getSortedByDate("2017-01-1", "2017-11-1");
-    for (unsigned i=0; i<ema.size(); i++){
-        ema[i].print();
+            case 4: {
+                string desde, hasta;
+                cout << "ingrese fechas " << endl;
+                cin >> desde >> hasta;
+                ema = M.getSortedByDate(desde, hasta);
+                for (unsigned i = 0; i < ema.size(); i++) {
+                    ema[i].print();
+                }
+                break;
             }
-
-    cout<<"----4---"<<endl;
-
-    ema = M.getByFrom("pedro");
-    for(int i=0; i<ema.size(); i++) {
-        ema[i].print();
+            case 5: {
+                string dest;
+                cout << "ingrese nombre" << endl;
+                cin >> dest;
+                ema = M.getByFrom(dest);
+                for (int i = 0; i < ema.size(); i++) {
+                    ema[i].print();
+                }
+                break;
+            }
+            case 6: {
+                string pal;
+                cout << "ingrese palabra" << endl;
+                cin >> pal;
+                ema = M.getByQuery(pal);
+                for (int i = 0; i < ema.size(); i++) {
+                    ema[i].print();
+                }
+                break;
+            }
+            case 7: {
+                salida = 1;
+                break;
+            }
+            default: {
+                cout << "Numero invalido" << endl;
+                break;
+            }
+        }
     }
-    cout<<"----5---"<<endl;
-
-    ema = M.getByQuery("morocho");
-    for(int i=0; i<ema.size(); i++){
-        ema[i].print();
-    }
-
-
-
-
-    }
+}
