@@ -51,8 +51,16 @@ template<class K, class T>
 HashMap<K, T>::~HashMap() {
 
     for (int i = 0; i < tamanio; i++) {
-        if (tabla[i] != NULL)
+        HashEntry<K, T> *aux = tabla[i], *tmp;
+
+        if (tabla[i] != NULL) {
+            while (aux->getNext() != NULL) {
+                tmp = aux;
+                aux = aux->getNext();
+                delete tmp;
+            }
             delete tabla[i];
+        }
     }
 }
 
